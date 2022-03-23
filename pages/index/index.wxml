@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view>
+    <view bindtap="dataApi">点我获取省份</view>
+    <loginpop id="dialogAlert"></loginpop>
+</view>

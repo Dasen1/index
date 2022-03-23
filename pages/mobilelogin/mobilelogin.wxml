@@ -1,0 +1,20 @@
+<!--pages/mobilelogin/mobilelogin.wxml-->
+<view class="wrap">
+  <view class="login_mb">手机验证码登录</view>
+  <view class="weui-cell_input">
+        <input class="weui-input" type="number" placeholder="请输入手机号" />
+  </view>
+   <view class="phoneCode">
+ <input type="text" placeholder="请输入验证码" bindinput="getPhoneCode" ></input>
+ <button type="primary" size="mini" bindtap="sendPhoneCode">发送验证码</button>
+ </view>
+
+   <view class="data-v">  
+    <label class="checkbox">
+        <checkbox value="cb" />
+      </label>
+   <text>同意《用户手册规则》</text>
+   </view>
+   <view class="btn"> 登录</view>
+  
+</view>

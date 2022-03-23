@@ -1,0 +1,55 @@
+.tip-ds{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6666;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.data-a{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  
+}
+.info-a{
+  font-size: 14px;
+  color: #000000;
+}
+.info-b{
+  font-size: 20px;
+  color: #000000;
+  font-weight: 600;
+  margin-top: 11px;
+  margin-bottom: 22px;
+}
+.info-c{
+  width: 100%;
+  height: 40px;
+  background-color: #f03d3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.info-logo{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f03d3d;
+  font-size: 14px;
+}
