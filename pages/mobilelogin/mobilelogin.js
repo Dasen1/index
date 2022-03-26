@@ -1,10 +1,47 @@
 // pages/mobilelogin/mobilelogin.js
+import {postSendCode} from "../../api/order"
+let phoneNumber = ""
+let phoneCode = ""
+let sendScene = "CUSTOMER_PHONE_LOGIN"  //短信验证场景
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
+  },
+  getPhoneNumber(e){
+    // 获取输入手机号
+    phoneNumber = e.detail.value
+    console.log(e.detail.value,"手机号")
+  },
+ getPhoneCode(e){
+    // 获取输入验证码
+    phoneCode = e.detail.value
+    
+  },
+ async sendPhoneCode(){
+    // 点击发送短信
+    if(!phoneNumber){
+       wx.showToast({
+        title:"请先输入手机号",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    try{
+      const data = await postSendCode({sendScene:sendScene,phoneNumber:phoneNumber})
+
+    }catch(e){
+      console.log(e)
+    }
+  },
+  loadByPhone(){
+  // 点击登录
+   
+
 
   },
 

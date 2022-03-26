@@ -19,7 +19,7 @@
   padding-left: 10px;
 }
 .btn {
-  width: 100%;
+  width: 100% !important;
   height: 40px;
   background-color: #07c160;
   display: flex;

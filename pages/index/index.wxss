@@ -1,0 +1,78 @@
+.bg_wrap{
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
+  background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F032120114622%2F200321114622-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650885231&t=1ccf69425f752d966f15dc4a6bf3d7ed");
+}
+.page-section{
+  width: 100%;
+  height: 146px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.data_img{
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 4px;
+}
+.qr_page{
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.67);
+  margin-top: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 14px;
+  color: #101010;
+  border-radius: 8px;
+}
+.reuder{
+ /* display: flex; */
+ margin-top: 8px;
+}
+._wp{
+  width: 84px;
+  border-top: 1px solid #757575;
+  /* margin-top: 5px; */
+}
+.del_pl{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.del_pll{
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.delep{
+  display: flex;
+}
+.read_a{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #DFA977;
+  text-align: center;
+}
+.read_b{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #75DEE6;
+  text-align: center;
+}
+.read_c{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #78EE97;
+  text-align: center;
+}
+.right_v{
+  margin-left: 50px;
+}
+.right_s{
+  margin-right: 10px;
+}

@@ -1,5 +1,37 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view>
-    <view bindtap="dataApi">点我获取省份</view>
-    <loginpop id="dialogAlert"></loginpop>
+    <view class="bg_wrap" bindtap="">
+        <!-- <view class="page-body"> -->
+        <view class="page-section page-section-spacing swiper">
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                <block wx:for="{{background}}" wx:key="*this">
+                    <swiper-item>
+                        <image class="data_img" src="{{item}}" alt="" />
+                        <!-- <view class="swiper-item {{item}}">{{item}}</view> -->
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="qr_page">
+            <view>完成认证最高可贷￥20万</view>
+            <view class="reuder">
+                <view class="delep">
+                    <view>快速认证</view>
+                    <view class="del_pl">
+                        <view class="read_a">1</view>
+                        <view class="_wp"></view>
+                        <view class="read_b">2</view>
+                        <view class="_wp"></view>
+                        <view class="read_c">3</view>
+                    </view>
+                </view>
+                <view class="del_pll">
+                    <view class="right_v">上传资料</view>
+                    <view>同意授信</view>
+                    <view class="right_s">银行放款</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- <loginpop id="dialogAlert"></loginpop> -->
 </view>

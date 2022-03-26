@@ -1,10 +1,16 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-import {getAllOrder} from '../../api/order'
 Page({
   data: {
-    motto: 'Hello World',
+    background: ['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F0F220092145%2F200F2092145-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=5b3595175a3be9cdd27898d4cb0f421b', 
+    'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1.lanrentuku.com%2F2020%2F7%2F11%2Fe23bfa96-6f7c-4c05-b4e7-0ee93d656d9f.jpg&refer=http%3A%2F%2Fi-1.lanrentuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=a73bf8aa9bdcb0d7046027bebf81f63c', 
+    'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F041620104229%2F200416104229-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=3d8baeb87c190b1d0814aae0db3494fc'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500
   },
   // 事件处理函数
   bindViewTap() {
@@ -22,12 +28,12 @@ Page({
 
 
  async dataApi(){
-          try{
-            const orders = await getAllOrder()
-            console.log(orders,"这是个啥")
-          }catch(e){
-            console.log(e,"这是请求失败了")
-          }
+          // try{
+          //   const orders = await getAllOrder()
+          //   console.log(orders,"这是个啥")
+          // }catch(e){
+          //   console.log(e,"这是请求失败了")
+          // }
   },
   getUserProfile(e) {
     // // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

@@ -1,18 +1,35 @@
 // pages/info/info.js
+import {getMessageList} from "../../api/info"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList : [],
+    // 默认当前页
+    pageNum:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.setData({
+    // 	//将第一页数据传递给DATA遍历组
+	  //   DATA: this.data.DATA1
+    // })
+     this.infoList()
+  },
+   infoList: async function(){
+      try{ 
+        const orders = await getMessageList({pageNum:this.data.pageNum})
+        this.setData({dataList:orders.list,pageNum:orders.pageNum})
+        
+        console.log(orders,"嘎嘎嘎")
+      }catch(e){
+       console.log(e)
+      }
   },
 
   /**
@@ -54,7 +71,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("到底了么")
+    this.infoList()
+    // var DATA = this.data.DATA.concat(this.data.DATA2)
+    // //重新将数据导入视图层data
+    // this.setData({
+    //   DATA: DATA
+    // })
   },
 
   /**
