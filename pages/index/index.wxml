@@ -78,8 +78,8 @@
                         <text>授信记录</text>
                     </view>
                     <view class="query_tab" bindtap="">
-                        <image src="../../image/iconImg/dkjd.png" />
-                        <text>贷款进度查询</text>
+                        <image src="../../image/iconImg/hkjh.png" />
+                        <text>还款计划</text>
                     </view>
                     <view class="query_tab" bindtap="">
                         <image src="../../image/iconImg/hkjl.png" />

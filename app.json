@@ -5,7 +5,13 @@
     "pages/my/my",
     "pages/mobilelogin/mobilelogin",
     "pages/authentication/authentication",
-    "pages/addinfo/addinfo"
+    "pages/addinfo/addinfo",
+    "pages/lendingpace/lendingpace",
+    "pages/loansrecord/loansrecord",
+    "pages/loanagreement/loanagreement",
+    "pages/creditrecord/creditrecord",
+    "pages/repayment/repayment",
+    "pages/repaymentrecord/repaymentrecord"
   ],
   "window":{
     "backgroundTextStyle":"light",
