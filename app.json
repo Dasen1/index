@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/info/info",
     "pages/my/my",
-    "pages/mobilelogin/mobilelogin"
+    "pages/mobilelogin/mobilelogin",
+    "pages/authentication/authentication",
+    "pages/addinfo/addinfo"
   ],
   "window":{
     "backgroundTextStyle":"light",

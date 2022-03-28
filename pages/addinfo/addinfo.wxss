@@ -1,0 +1,99 @@
+/* pages/addinfo/addinfo.wxss */
+/* pages/authentication/authentication.wxss */
+.wrap_bet{
+  /* height: 100vh; */
+  padding: 10px 30px;
+  background-color: #c1c2c7;
+  /* display: flex;
+  justify-content: center; */
+}
+.approve{
+  width: 260px;
+  /* padding: 10px; */
+  height: 66px;
+  background-color: #fff;
+  border-radius: 16px;
+  margin: 0 auto;
+}
+.approve_x{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.approve_wire{
+  width: 60px;
+ border-bottom: 1px solid #c1c2c7;
+}
+.approve_text{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.approve_roude{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #F2A72C;
+  border-radius: 50%;
+  font-size: 12px;
+}
+.vpn{
+  background-color: #72EA72;
+}
+.approve_s{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 12px;
+}
+.agreement{
+  width: 295px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 10px;
+}
+.add_info{
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.flex_wid{
+  width: 60px;
+  margin-right: 4px;
+  text-align: right;
+}
+.weui-input{
+  width: 185px;
+  height: 30px;
+  border: 1px solid #bbbbbb;
+  padding-left: 10px;
+}
+.views{
+  width: 83px;
+}
+.but_pd{
+  width: 89px;
+}
+.bpv{
+  height: 20px;
+}
+.picker{
+  line-height: 30px;
+}
+.dev_btn{
+  display: flex;
+  justify-content: center;
+}

@@ -26,6 +26,28 @@ Page({
     // }
   },
 
+  // 点击贷款进度
+  fastClick(){
+    if(true){
+      wx.showModal({
+        // title: '认证',
+        cancelText:"取消",
+        confirmText:"开始认证",
+        content: '您的企业还未认证，无贷款记录',
+        success (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url:"/pages/authentication/authentication"
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+
+  },
+
 
  async dataApi(){
           // try{

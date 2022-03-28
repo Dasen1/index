@@ -32,6 +32,44 @@
                 </view>
             </view>
         </view>
+        <view>
+            <view class="text_vw">可贷银行</view>
+            <view class="de_kiel">
+                <view class="bank">
+                    <view class="bank_flex">
+                        <view>
+                            <img src="" alt="" />
+                            <text class="fent_web">浙商银行</text>
+                        </view>
+                        <view class="font">
+                            <text>可贷额度</text>
+                            <text class="font_text">$200000元</text>
+                        </view>
+                    </view>
+                    <view class="back_ve"> 
+                        <view>
+                            <button bindtap="fastClick" size="mini" type="primary">快捷贷款</button>
+                        </view>
+                        <view>
+                            <button size="mini" class="detaile">快捷还款</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view>
+         <view class="text_vw">快速查询</view>
+         <view class="query_wrap">
+             <view class="query_add">
+                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
+                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
+                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
+                 
+                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
+                   <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
+           </view>
+         </view>
+        </view>
     </view>
     <!-- <loginpop id="dialogAlert"></loginpop> -->
 </view>
