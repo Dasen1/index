@@ -61,27 +61,27 @@
             <view class="text_vw">快速查询</view>
             <view class="query_wrap">
                 <view class="query_add">
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="loansQuery">
                         <image src="../../image/iconImg/dkjd.png" />
-                        <text>贷款进度查询</text>
+                        <text>贷款进度</text>
                     </view>
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="loansRecord">
                         <image src="../../image/iconImg/dkjl.png" />
                         <text>贷款记录</text>
                     </view>
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="loansProtocol">
                         <image src="../../image/iconImg/dkxy.png" />
-                        <text>贷款协议查询</text>
+                        <text>贷款协议</text>
                     </view>
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="creditRecord">
                         <image src="../../image/iconImg/sxjl.png" />
                         <text>授信记录</text>
                     </view>
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="repayment">
                         <image src="../../image/iconImg/hkjh.png" />
                         <text>还款计划</text>
                     </view>
-                    <view class="query_tab" bindtap="">
+                    <view class="query_tab" bindtap="repaymentQuery">
                         <image src="../../image/iconImg/hkjl.png" />
                         <text>还款记录</text>
                     </view>

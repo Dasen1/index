@@ -1,1 +1,68 @@
 /* pages/my/my.wxss */
+
+.wrap_quer{
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
+  background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F032120114622%2F200321114622-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650885231&t=1ccf69425f752d966f15dc4a6bf3d7ed") ;
+}
+.wrap_info{
+  width: 339px;
+  height: 84px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.wrap_box{
+  width: 339px;
+  height: 113px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.wrap_info_name{
+
+}
+.width_in{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.text_vip{
+  font-size: 14px;
+  color: #101010;
+  margin-bottom: 4px;
+}
+.text_font{
+  font-size: 14px;
+  color: #6F6F6F;
+}
+.data_info{
+  text-align: center;
+  font-size: 14px;
+  color: #101010;
+}
+.data_img{
+  width: 40px;
+  height: 40px;
+}
+.out{
+  margin: 0 auto;
+  text-align: center;
+}
+.btn_out{
+   background-color: #0540B7;
+   color: #fff;
+   font-size: 14px;
+}

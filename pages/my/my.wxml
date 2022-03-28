@@ -1,2 +1,49 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="wrap_quer">
+  <view class="wrap_info">
+    <image class="width_in" src="../../image/bg_img.png" />
+    <view class="wrap_info_name">
+      <view class="text_vip">一叶知秋</view>
+      <view class="text_font">广东***科技有限公司</view>
+    </view>
+  </view>
+  <view class="wrap_box">
+    <view class="data_info">
+      <image class="data_img" src="../../image/iconImg/xxxg.png" />
+      <view >信息修改</view>
+    </view>
+    <view class="data_info" bindtap="loansRecord">
+      <image class="data_img" src="../../image/iconImg/dkjl.png" />
+      <view >贷款记录</view>
+    </view>
+     <view class="data_info" bindtap="repayment">
+      <image class="data_img" src="../../image/iconImg/hkjh.png" />
+      <view >还款计划</view>
+    </view>
+     <view class="data_info" >
+      <image class="data_img" src="../../image/iconImg/yqzd.png" />
+      <view >用气账单</view>
+    </view>
+  </view>
+ <view class="wrap_box" >
+   <view class="data_info" bindtap="loansQuery">
+      <image class="data_img" src="../../image/iconImg/dkjd.png" />
+      <view >贷款进度</view>
+    </view>
+    <view class="data_info" bindtap="loansProtocol">
+      <image class="data_img" src="../../image/iconImg/dkxy.png" />
+      <view >贷款协议</view>
+    </view>
+     <view class="data_info" bindtap="repaymentQuery">
+      <image class="data_img" src="../../image/iconImg/hkjl.png" />
+      <view >还款记录</view>
+    </view>
+     <view class="data_info" bindtap="creditRecord">
+      <image class="data_img" src="../../image/iconImg/sxjl.png" />
+      <view >授信记录</view>
+    </view>
+ </view>
+   <view class="out">
+     <button class="btn_out" size="mini" bindtap="logoOut">退出登录</button>
+   </view>
+</view>

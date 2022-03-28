@@ -62,5 +62,60 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+  // 退出登录
+  logoOut(){
+    wx.showModal({
+      title: '退出登录',
+      content: '确定要退出登录么？',
+      success: function (res) {
+        if (res.confirm) {  
+           wx.switchTab({  
+            url: `/pages/index/index`,
+          })
+        } else {   
+          console.log('点击取消回调')
+        }
+      }
+    })
+  },
+
+   // 贷款进度
+   loansQuery(){
+    wx.navigateTo({
+      url:"/pages/lendingpace/lendingpace"
+    })
+  },
+  // 贷款记录
+  loansRecord(){
+    wx.navigateTo({
+      url:"/pages/loansrecord/loansrecord"
+    })
+  },
+  // 贷款协议
+  loansProtocol(){
+    wx.navigateTo({
+      url:"/pages/loanagreement/loanagreement"
+    })
+  },
+  // 授信记录
+  creditRecord(){
+    wx.navigateTo({
+      url:"/pages/creditrecord/creditrecord"
+    })
+  },
+  // 还款计划
+  repayment(){
+    wx.navigateTo({
+      url:"/pages/repayment/repayment"
+    })
+  },
+  // 还款记录
+  repaymentQuery(){
+    wx.navigateTo({
+      url:"/pages/repaymentrecord/repaymentrecord"
+    })
+  },
 })

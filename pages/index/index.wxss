@@ -1,6 +1,6 @@
 .bg_wrap{
   width: 100vw;
-  /* height: 100vh; */
+  /* height: 100%; */
   box-sizing: border-box;
   padding: 10px;
   background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F032120114622%2F200321114622-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650885231&t=1ccf69425f752d966f15dc4a6bf3d7ed") ;

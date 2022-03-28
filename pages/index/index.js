@@ -48,6 +48,42 @@ Page({
 
   },
 
+  // 贷款进度
+  loansQuery(){
+    wx.navigateTo({
+      url:"/pages/lendingpace/lendingpace"
+    })
+  },
+  // 贷款记录
+  loansRecord(){
+    wx.navigateTo({
+      url:"/pages/loansrecord/loansrecord"
+    })
+  },
+  // 贷款协议
+  loansProtocol(){
+    wx.navigateTo({
+      url:"/pages/loanagreement/loanagreement"
+    })
+  },
+  // 授信记录
+  creditRecord(){
+    wx.navigateTo({
+      url:"/pages/creditrecord/creditrecord"
+    })
+  },
+  // 还款计划
+  repayment(){
+    wx.navigateTo({
+      url:"/pages/repayment/repayment"
+    })
+  },
+  // 还款记录
+  repaymentQuery(){
+    wx.navigateTo({
+      url:"/pages/repaymentrecord/repaymentrecord"
+    })
+  },
 
  async dataApi(){
           // try{
