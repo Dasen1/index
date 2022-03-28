@@ -46,7 +46,7 @@
                             <text class="font_text">$200000元</text>
                         </view>
                     </view>
-                    <view class="back_ve"> 
+                    <view class="back_ve">
                         <view>
                             <button bindtap="fastClick" size="mini" type="primary">快捷贷款</button>
                         </view>
@@ -58,17 +58,35 @@
             </view>
         </view>
         <view>
-         <view class="text_vw">快速查询</view>
-         <view class="query_wrap">
-             <view class="query_add">
-                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
-                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
-                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
-                 
-                 <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
-                   <view class="query_tab"> <img src="" alt=""/> <text>贷款进度查询</text></view>
-           </view>
-         </view>
+            <view class="text_vw">快速查询</view>
+            <view class="query_wrap">
+                <view class="query_add">
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/dkjd.png" />
+                        <text>贷款进度查询</text>
+                    </view>
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/dkjl.png" />
+                        <text>贷款记录</text>
+                    </view>
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/dkxy.png" />
+                        <text>贷款协议查询</text>
+                    </view>
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/sxjl.png" />
+                        <text>授信记录</text>
+                    </view>
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/dkjd.png" />
+                        <text>贷款进度查询</text>
+                    </view>
+                    <view class="query_tab" bindtap="">
+                        <image src="../../image/iconImg/hkjl.png" />
+                        <text>还款记录</text>
+                    </view>
+                </view>
+            </view>
         </view>
     </view>
     <!-- <loginpop id="dialogAlert"></loginpop> -->
