@@ -66,3 +66,30 @@
    color: #fff;
    font-size: 14px;
 }
+.moudel{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.moudel_wrap{
+  width: 286px;
+  background-color: #FFF;
+  padding: 20px;
+
+}
+.moudel_pay{
+  font-size: 14px;
+  display: flex;
+ /* align-items: center; */
+ margin-bottom: 8px;
+}
+.moudel_text{
+  width: 60px;
+  margin-right: 6px;
+}

@@ -1,7 +1,7 @@
 <!-- pages/authentication/authentication.wxml -->
 <view class="wrap_bet">
   <view class="approve">
-    <view class="approve_text">认证进度</view>
+    <view class="approve_text">贷款进度</view>
     <view class="approve_x">
       <view class="approve_roude vpn">1</view>
       <view class="approve_wire"></view>
@@ -10,13 +10,13 @@
       <view class="approve_roude">3</view>
     </view>
     <view class="approve_s">
-      <view>隐私协议</view>
-      <view>上传资料</view>
-      <view>认证完成</view>
+      <view>隐私保护</view>
+      <view>收款资料填写</view>
+      <view>银行放款</view>
     </view>
   </view>
   <view class="agreement">
-    <view class="agreement_text">隐私政策与服务协议</view>
+    <view class="agreement_text">企业用气账单使用协议</view>
     <view class="agreement_set">
       （待修订）
         您在使用我们的服务时，我们可能会收集和使用您的相关信息。
@@ -235,12 +235,12 @@
       <view class="check_box">
         <checkbox-group bindchange="checkboxChange" class="checkbox">
           <checkbox value="1" checked="{{isShow}}" />
-           <text>我已阅读并同意该隐私政策内容，且授权本平台在政策允许之下使用我的相关信息</text>
+           <text>我已阅读并同意该隐私政策内容，同意将本企业用气账单推送至银行，但仅限于在隐私保护政策下使用</text>
         </checkbox-group>
        
       </view>
       <view class="flex_can">
-         <button wx:if="{{isShow}}" class="turn" size="mini" bindtap="okayClick">同意</button>
+        <button wx:if="{{isShow}}" class="turn" size="mini" bindtap="okayClick">同意</button>
         <button wx:else class="okay" size="mini" bindtap="okayClick2">同意</button>
         <button  class="turn" size="mini">拒绝</button>
       </view>

@@ -1,4 +1,4 @@
-<!--pages/my/my.wxml-->
+<!-- pages/my/my.wxml -->
 <view class="wrap_quer">
   <view class="wrap_info">
     <image class="width_in" src="../../image/bg_img.png" />
@@ -10,40 +10,82 @@
   <view class="wrap_box">
     <view class="data_info">
       <image class="data_img" src="../../image/iconImg/xxxg.png" />
-      <view >信息修改</view>
+      <view>信息修改</view>
     </view>
     <view class="data_info" bindtap="loansRecord">
       <image class="data_img" src="../../image/iconImg/dkjl.png" />
-      <view >贷款记录</view>
+      <view>贷款记录</view>
     </view>
-     <view class="data_info" bindtap="repayment">
+    <view class="data_info" bindtap="repayment">
       <image class="data_img" src="../../image/iconImg/hkjh.png" />
-      <view >还款计划</view>
+      <view>还款计划</view>
     </view>
-     <view class="data_info" >
+    <!-- <view class="data_info" >
       <image class="data_img" src="../../image/iconImg/yqzd.png" />
       <view >用气账单</view>
-    </view>
+    </view> -->
   </view>
- <view class="wrap_box" >
-   <view class="data_info" bindtap="loansQuery">
+  <view class="wrap_box">
+    <view class="data_info" bindtap="loansQuery">
       <image class="data_img" src="../../image/iconImg/dkjd.png" />
-      <view >贷款进度</view>
+      <view>贷款进度</view>
     </view>
     <view class="data_info" bindtap="loansProtocol">
       <image class="data_img" src="../../image/iconImg/dkxy.png" />
-      <view >贷款协议</view>
+      <view>贷款协议</view>
     </view>
-     <view class="data_info" bindtap="repaymentQuery">
+    <view class="data_info" bindtap="repaymentQuery">
       <image class="data_img" src="../../image/iconImg/hkjl.png" />
-      <view >还款记录</view>
+      <view>还款记录</view>
     </view>
-     <view class="data_info" bindtap="creditRecord">
+    <view class="data_info" bindtap="creditRecord">
       <image class="data_img" src="../../image/iconImg/sxjl.png" />
-      <view >授信记录</view>
+      <view>授信记录</view>
     </view>
- </view>
-   <view class="out">
-     <button class="btn_out" size="mini" bindtap="logoOut">退出登录</button>
-   </view>
+  </view>
+  <view class="out">
+    <button class="btn_out" size="mini" bindtap="logoOut">退出登录</button>
+  </view>
+  <!-- 认证信息弹窗 -->
+  <view class="moudel">
+    <view class="moudel_wrap">
+      <view>认证信息</view>
+      <view class="moudel_pay">
+        <view class="moudel_text">账号名称:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">公司名称:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">纳税人识别号:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">法人姓名:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">法人身份证号:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">手机号:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">燃气公司:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">被授权人姓名:</view>
+        <view>abcde1224</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">被授权人身份证号:</view>
+        <view>abcde1224</view>
+      </view>
+    </view>
+  </view>
 </view>
