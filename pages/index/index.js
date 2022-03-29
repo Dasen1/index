@@ -19,13 +19,13 @@ Page({
     // })
   },
   onLoad() {
+    console.log("走了一次")
     // if (wx.getUserProfile) {
     //   this.setData({
     //     canIUseGetUserProfile: true
     //   })
     // }
   },
-
   // 点击贷款进度
   fastClick(){
     // wx.navigateTo({
@@ -49,6 +49,7 @@ Page({
       })
     }
   },
+  
 
   // 贷款进度
   loansQuery(){
