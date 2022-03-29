@@ -10,10 +10,10 @@
  </view>
 
    <view class="data-v"> 
-    <label class="checkbox">
-        <checkbox value="cb" />
-      </label>
-   <text>同意《用户手册规则》</text>
+   <checkbox-group bindchange="checkboxChange" class="checkbox">
+          <checkbox value="1" checked="{{isShow}}" />
+           <text>同意《用户手册规则》</text>
+        </checkbox-group>
    </view>
    <button class="btn" type="primary" bindtap="loadByPhone">登录</button>
   

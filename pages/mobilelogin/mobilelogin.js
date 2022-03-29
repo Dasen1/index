@@ -1,5 +1,5 @@
 // pages/mobilelogin/mobilelogin.js
-import {postSendCode} from "../../api/order"
+import {postSendCode,postPhoneLogin} from "../../api/order"
 let phoneNumber = ""
 let phoneCode = ""
 let sendScene = "CUSTOMER_PHONE_LOGIN"  //短信验证场景
@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShow: false
 
   },
   getPhoneNumber(e){
@@ -21,8 +22,8 @@ Page({
     phoneCode = e.detail.value
     
   },
+  // 获取验证码
  async sendPhoneCode(){
-    // 点击发送短信
     if(!phoneNumber){
        wx.showToast({
         title:"请先输入手机号",
@@ -38,11 +39,52 @@ Page({
       console.log(e)
     }
   },
-  loadByPhone(){
-  // 点击登录
+  // 同意用户手册
+  checkboxChange: function (e) {
+    if (e.detail.value.includes('1')) {
+      console.log("我选中了")
+      this.setData({ isShow: true })
+    } else {
+      console.log("我取消了")
+      this.setData({ isShow: false })
+    }
+    // this.setData({isShow:})
+  },
+
+  // 登录
+async  loadByPhone(){
+  if(!phoneNumber){
+    wx.showToast({
+     title:"请先输入手机号",
+     icon: 'none',
+     duration: 1500
+   })
+   return
+  }
+  if(!phoneCode){
+    wx.showToast({
+     title:"请先输入手机验证码",
+     icon: 'none',
+     duration: 1500
+   })
+   return
+  }
+  if(!this.data.isShow){
+    wx.showToast({
+      title:"请先同意用户手册",
+      icon: 'none',
+      duration: 1500
+    })
+    return
+  }
+
+   try{
+     const datas =await postPhoneLogin({phoneNumber:phoneNumber ,verifyCode:phoneNumber})
+     console.log(datas,"这是什么")
+   }catch(e){
+
+   }
    
-
-
   },
 
   /**

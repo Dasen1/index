@@ -33,3 +33,13 @@ export function postSendCode(data) {
     data,
   },"isToken")
 }
+
+// 手机验证码登录
+export function postPhoneLogin(data) {
+  // 获取用户信息
+  return request({
+    url: '/customer/phoneLogin',
+    method: 'post',
+    data,
+  },)
+}
