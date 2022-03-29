@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShow:false
 
   },
 
@@ -118,4 +119,18 @@ Page({
       url:"/pages/repaymentrecord/repaymentrecord"
     })
   },
+
+  // 信息修改
+  infoUpdata(){
+    this.setData({
+      isShow:true
+     })
+  },
+
+  // 好的按钮
+   onayClick(){
+     this.setData({
+      isShow:false
+     })
+   }
 })

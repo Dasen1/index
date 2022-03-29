@@ -80,16 +80,35 @@
 .moudel_wrap{
   width: 286px;
   background-color: #FFF;
-  padding: 20px;
+  padding: 26px;
+  padding-top: 16px;
 
 }
 .moudel_pay{
   font-size: 14px;
+  color: #101010;
   display: flex;
  /* align-items: center; */
  margin-bottom: 8px;
 }
 .moudel_text{
-  width: 60px;
+  width: 80px;
   margin-right: 6px;
+  /* text-align: center; */
+}
+.size_flex{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.btn_color{
+  color: #fff;
+  background-color: #0540B7;
+}
+.rz_x{
+  text-align: center;
+  font-size: 16px;
+  color: #101010;
+  font-weight: 600;
+  margin-bottom: 12px;
 }

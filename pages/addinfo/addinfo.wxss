@@ -1,9 +1,10 @@
 /* pages/addinfo/addinfo.wxss */
 /* pages/authentication/authentication.wxss */
 .wrap_bet{
-  /* height: 100vh; */
-  padding: 10px 30px;
+  height: 100vh;
+  padding: 16px 30px;
   background-color: #c1c2c7;
+  overflow-y: auto;
   /* display: flex;
   justify-content: center; */
 }
@@ -61,7 +62,7 @@
 .add_info{
   text-align: center;
   font-size: 16px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 .flex{
   display: flex;
@@ -96,4 +97,8 @@
 .dev_btn{
   display: flex;
   justify-content: center;
+  margin-top: 16px;
+}
+.weui-cell{
+  display: flex;
 }

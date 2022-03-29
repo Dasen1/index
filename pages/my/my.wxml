@@ -8,7 +8,7 @@
     </view>
   </view>
   <view class="wrap_box">
-    <view class="data_info">
+    <view class="data_info" bindtap="infoUpdata">
       <image class="data_img" src="../../image/iconImg/xxxg.png" />
       <view>信息修改</view>
     </view>
@@ -47,45 +47,51 @@
     <button class="btn_out" size="mini" bindtap="logoOut">退出登录</button>
   </view>
   <!-- 认证信息弹窗 -->
-  <view class="moudel">
+  <view class="moudel" wx:if="{{isShow}}">
     <view class="moudel_wrap">
-      <view>认证信息</view>
+      <view class="rz_x">认证信息</view>
       <view class="moudel_pay">
-        <view class="moudel_text">账号名称:</view>
+        <view class="moudel_text">账号名称</view>
+        <view>ABCD1234</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">公司名称</view>
+        <view>广东绿能贷科技有限公司</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">纳税人识别号</view>
+        <view>KX123456789ABCD</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">法人姓名</view>
         <view>abcde1224</view>
       </view>
        <view class="moudel_pay">
-        <view class="moudel_text">公司名称:</view>
+        <view class="moudel_text">法人身份证号</view>
+        <view>12345619******4321</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">手机号</view>
+        <view>137****0037</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">燃气公司</view>
+        <view>佛燃能源集团股份有限公司</view>
+      </view>
+       <view class="moudel_pay">
+        <view class="moudel_text">被授权人姓名</view>
         <view>abcde1224</view>
       </view>
        <view class="moudel_pay">
-        <view class="moudel_text">纳税人识别号:</view>
-        <view>abcde1224</view>
+        <view class="moudel_text">被授权人身份证号</view>
+        <view>12345619******1234</view>
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">法人姓名:</view>
-        <view>abcde1224</view>
-      </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">法人身份证号:</view>
-        <view>abcde1224</view>
-      </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">手机号:</view>
-        <view>abcde1224</view>
-      </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">燃气公司:</view>
-        <view>abcde1224</view>
-      </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">被授权人姓名:</view>
-        <view>abcde1224</view>
-      </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">被授权人身份证号:</view>
-        <view>abcde1224</view>
-      </view>
+
+    <view class="size_flex">
+        <button class="btn_color" size="mini" bindtap="onayClick">好的</button>
+       <button class="btn_color" size="mini">修改注册信息</button>
+    </view>
+    
     </view>
   </view>
 </view>
