@@ -22,6 +22,13 @@ export const request = (params, isToken) => {
       header: header,
       url: params.customUrl || ENV.baseURL + params.url, // params.customUrl自定义的url，有些接口可能baseURL也不同
       success: result => {
+       //  接口错误跳转首页
+        if (result.data.code === 9008 ||  result.data.code===9004) {
+          wx.reLaunch({
+            url: "/pages/index/index" // 你的登陆页面地址
+          });
+        }
+
         if (result.data.code === 200) {
           resolve(result.data.result) // 直接返回结果，需要结构一样
         } else {

@@ -89,5 +89,5 @@
             </view>
         </view>
     </view>
-    <loginpop id="dialogAlert"></loginpop>
+    <loginpop wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
 </view>
