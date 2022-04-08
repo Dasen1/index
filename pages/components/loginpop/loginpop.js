@@ -1,5 +1,5 @@
 // pages/components/midpag.js
-import { postOpinInfo, postByToken } from "../../../api/order"
+import { postOpinInfo, postByToken,postSendCode } from "../../../api/order"
 Component({
   /**
    * 组件的属性列表
@@ -8,15 +8,19 @@ Component({
     title: {
       type: Boolean,
       value: true
+    },
+    isShow:{
+      type: Boolean,
+      value: true
     }
   },
 
   /**
    * 组件的初始数据
    */
-  data: {
-    isShow: true,
-  },
+  // data: {
+  //   isShow: true,
+  // },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
@@ -45,10 +49,42 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-    // handleGetPhoneNumber: (e) => {
-    //   console.log(e, ",-------------")
-    // },
+    // 获取手机号登录
+    handleGetPhoneNumber: function(e) {
+      console.log(e,"这是什么东西")
+      let res =e.detail
+      wx.login({
+        success: async code => {
+          console.log(code, "这是code")
+          let data = {}
+          data.code = code.code
+          // data.rawData = res.rawData
+          // data.signature = res.signature
+          data.encryptedData = res.encryptedData
+          data.iv = res.iv
+          try {
+            const orders = await postOpinInfo(data)
+            wx.setStorageSync('token', orders)
+            // 接口请求成功跳转首页关闭弹窗
+            const dataInfo = await postByToken()
+            console.log(dataInfo, "这是token")
+            wx.setStorageSync('info', dataInfo)
+            // wx.switchTab({
+            //   url: `/pages/index/index`,
+            // })
+            this.setData({
+              isShow: false
+            })
+          } catch (e) {
+            console.log(e,)
+            // this.setData({
+            //   isShow: true
+            // })
+          }
+        }
+      })
+    },
+    // 获取微信头像登录
     getUserProfile: function () {
       // 获取微信用户跟code
       wx.getUserProfile({

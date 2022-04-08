@@ -72,7 +72,8 @@ Page({
       title: '退出登录',
       content: '确定要退出登录么？',
       success: function (res) {
-        if (res.confirm) {  
+        if (res.confirm) { 
+          wx.clearStorage()  //清空全部存储
            wx.switchTab({  
             url: `/pages/index/index`,
           })

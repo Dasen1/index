@@ -23,7 +23,13 @@ export const request = (params, isToken) => {
       url: params.customUrl || ENV.baseURL + params.url, // params.customUrl自定义的url，有些接口可能baseURL也不同
       success: result => {
        //  接口错误跳转首页
-        if (result.data.code === 9008 ||  result.data.code===9004) {
+        if (result.data.code === 9005 ||  result.data.code===9004 ||result.data.code===9007) {
+          wx.showToast({
+            title: 'token已失效,请重新登录',
+            icon: 'none',
+            duration: 1500
+        })
+          wx.clearStorage()  //清空全部存储
           wx.reLaunch({
             url: "/pages/index/index" // 你的登陆页面地址
           });

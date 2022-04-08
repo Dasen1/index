@@ -47,3 +47,8 @@
   color: #000;
   text-align: center;
 }
+.nomeset{
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+}

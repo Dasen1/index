@@ -1,18 +1,26 @@
 // index.js
 // 获取应用实例
+import { getImageList, } from "../../api/home"
 const app = getApp()
+
 Page({
   data: {
-    background: ['https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F0F220092145%2F200F2092145-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=5b3595175a3be9cdd27898d4cb0f421b', 
-    'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1.lanrentuku.com%2F2020%2F7%2F11%2Fe23bfa96-6f7c-4c05-b4e7-0ee93d656d9f.jpg&refer=http%3A%2F%2Fi-1.lanrentuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=a73bf8aa9bdcb0d7046027bebf81f63c', 
-    'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F041620104229%2F200416104229-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=3d8baeb87c190b1d0814aae0db3494fc'],
+    background: [{ img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F0F220092145%2F200F2092145-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=5b3595175a3be9cdd27898d4cb0f421b', id: 1 },
+    { img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1.lanrentuku.com%2F2020%2F7%2F11%2Fe23bfa96-6f7c-4c05-b4e7-0ee93d656d9f.jpg&refer=http%3A%2F%2Fi-1.lanrentuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=a73bf8aa9bdcb0d7046027bebf81f63c', id: 2 },
+    { img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F041620104229%2F200416104229-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=3d8baeb87c190b1d0814aae0db3494fc', id: 3 }],
     indicatorDots: true,
     vertical: false,
     autoplay: false,
     interval: 2000,
     duration: 500,
+    isShow: false,
 
-    isShow:false
+    globalData: {  //自定义导航栏获取刘海屏
+      navHeight: "",
+      navTop: "",
+      navObj: "",
+      navObjWid: ""
+    }  //获取导航的信息
   },
   // 事件处理函数
   bindViewTap() {
@@ -20,30 +28,70 @@ Page({
     //   url: '../logs/logs'
     // })
   },
-  // 页面加载验证是否登录
-  onLoad() {
+
+  onShow() {
+    // 获取顶部胶囊详细信息
+    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+       success: res => {
+         //导航高度
+         let statusBarHeight = res.statusBarHeight,
+           navTop = menuButtonObject.top,
+           navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+           navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
+         this.data.globalData.navHeight = navHeight; //导航栏总体高度
+         this.data.globalData.navTop = navTop; //胶囊距离顶部距离
+         this.data.globalData.navObj = menuButtonObject.height; //胶囊高度
+         this.data.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+         console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
+       },
+       fail(err) {
+         console.log(err);
+       }
+     })
+
+    // 页面加载验证是否登录
     const token = wx.getStorageSync('token')
-    if(!token){
+    if (!token) {
       this.setData({
-        isShow :true
+        isShow: true
       })
+      return
     }
+     this.getImagePage()
+    // 页面加载请求轮播
+   
   },
+  onLoad() {
+  },
+  onSwiperTap(e) {
+    console.log(e, "gagag")
+  },
+
+  // 页面加载调用轮播
+  async getImagePage() {
+
+    let data = await getImageList()
+    console.log(data, "这返回的数据")
+
+  },
+
+
   // 点击贷款进度
-  fastClick(){
+  fastClick() {
     // wx.navigateTo({
     //   url:"/pages/billcredit/billcredit"
     // })
-    if(true){
+    if (true) {
       wx.showModal({
         // title: '认证',
-        cancelText:"取消",
-        confirmText:"开始认证",
+        cancelText: "取消",
+        confirmText: "开始认证",
         content: '您的企业还未认证，无贷款记录',
-        success (res) {
+        success(res) {
           if (res.confirm) {
             wx.navigateTo({
-              url:"/pages/authentication/authentication"
+              url: "/pages/authentication/authentication"
             })
           } else if (res.cancel) {
             console.log('用户点击取消')
@@ -52,51 +100,51 @@ Page({
       })
     }
   },
-  
+
 
   // 贷款进度
-  loansQuery(){
+  loansQuery() {
     wx.navigateTo({
-      url:"/pages/lendingpace/lendingpace"
+      url: "/pages/lendingpace/lendingpace"
     })
   },
   // 贷款记录
-  loansRecord(){
+  loansRecord() {
     wx.navigateTo({
-      url:"/pages/loansrecord/loansrecord"
+      url: "/pages/loansrecord/loansrecord"
     })
   },
   // 贷款协议
-  loansProtocol(){
+  loansProtocol() {
     wx.navigateTo({
-      url:"/pages/loanagreement/loanagreement"
+      url: "/pages/loanagreement/loanagreement"
     })
   },
   // 授信记录
-  creditRecord(){
+  creditRecord() {
     wx.navigateTo({
-      url:"/pages/creditrecord/creditrecord"
+      url: "/pages/creditrecord/creditrecord"
     })
   },
   // 还款计划
-  repayment(){
+  repayment() {
     wx.navigateTo({
-      url:"/pages/repayment/repayment"
+      url: "/pages/repayment/repayment"
     })
   },
   // 还款记录
-  repaymentQuery(){
+  repaymentQuery() {
     wx.navigateTo({
-      url:"/pages/repaymentrecord/repaymentrecord"
+      url: "/pages/repaymentrecord/repaymentrecord"
     })
   },
 
- async dataApi(){
-          // try{
-          //   const orders = await getAllOrder()
-          //   console.log(orders,"这是个啥")
-          // }catch(e){
-          //   console.log(e,"这是请求失败了")
-          // }
+  async dataApi() {
+    // try{
+    //   const orders = await getAllOrder()
+    //   console.log(orders,"这是个啥")
+    // }catch(e){
+    //   console.log(e,"这是请求失败了")
+    // }
   },
 })

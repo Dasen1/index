@@ -1,18 +1,20 @@
-
 <view class="time_a">
-<view wx:for="{{dataList}}">
-  <view wx:key="{{index}}">
-    <view class="margin">
-     <text class="color">{{item.messageSceneDesc}}</text>
-     <text  class="size">{{item.sendTime}}</text>
-     </view>
-     <view class="color_rod">
-       <view wx:if="{{item.isRead}}" class="color_w"></view>
-     <view class="set_v">
-       <text >{{item.messageContent}}</text>
-     </view>
-     </view>
+  <view wx:if="{{dataList.length}}">
+    <view wx:for="{{dataList}}">
+      <view wx:key="{{index}}">
+        <view class="margin">
+          <text class="color">{{item.messageSceneDesc}}</text>
+          <text class="size">{{item.sendTime}}</text>
+        </view>
+        <view class="color_rod">
+          <view wx:if="{{item.isRead}}" class="color_w"></view>
+          <view class="set_v">
+            <text>{{item.messageContent}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="nome" wx:if="{{nomore}}">没有更多了</view>
   </view>
-</view>
-<view class="nome" wx:if="{{nomore}}">没有更多了</view>
+  <view wx:else class="nomeset">暂无数据</view>
 </view>

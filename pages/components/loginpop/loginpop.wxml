@@ -5,9 +5,9 @@
         <view class="data-a">
             <view class="info-a">亲爱的用户</view>
             <view class="info-b">请选择你的登录方式</view>
-            <view class="info-c" bindtap="getUserProfile">微信一键登录</view>
+            <!-- <view class="info-c" bindtap="getUserProfile">微信一键登录</view> -->
+          <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取用户手机号</button>
            <view class="info-logo" bindtap="skipClick">手机验证码登录</view>
-         <!-- <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取用户手机号</button> -->
         </view>
     </view>
 </view>

@@ -1,14 +1,5 @@
 import {request} from '../request/request'
 
-// export function getAllOrder(data) {
-//   // 获取省份
-//   return request({
-//     url: '/api/area/province/list',
-//     method: 'get',
-//     data // 这里get和post都是data,没有params
-//   },"isToken")
-// }
-
 export function postOpinInfo(data) {
   // 获取用户token
   return request({
@@ -26,17 +17,17 @@ export function postByToken(data) {
   },"isToken")
 }
 export function postSendCode(data) {
-  // 获取用户信息
+  // 获取短信验证码
   return request({
     url: '/sms/sendCode',
     method: 'post',
     data,
-  },"isToken")
+  },"isToken") 
 }
 
 // 手机验证码登录
 export function postPhoneLogin(data) {
-  // 获取用户信息
+  // 获取token
   return request({
     url: '/customer/phoneLogin',
     method: 'post',

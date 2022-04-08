@@ -4,64 +4,58 @@
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  padding: 10px;
-  /* background-color:#EFEFEF ; */
-  background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F032120114622%2F200321114622-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650885231&t=1ccf69425f752d966f15dc4a6bf3d7ed") ;
+  padding: 20rpx;
+  background-color: #EFEFEF;
 }
 .wrap_info{
-  width: 339px;
-  height: 84px;
-  /* height: 142px; */
+  height: 168rpx;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 16px;
-  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 32rpx;
+  margin-bottom: 60rpx;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 20px;
-   /* background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F032120114622%2F200321114622-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650885231&t=1ccf69425f752d966f15dc4a6bf3d7ed") ; */
+  padding: 40rpx;
+  border: 2rpx solid rgb(187, 187, 187);
 }
 .wrap_box{
-  width: 339px;
-  height: 113px;
+  /* width: 339px; */
+  height: 226rpx;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 16px;
-  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 32rpx;
+  margin-bottom: 100rpx;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border: 2rpx solid rgb(187, 187, 187);
 }
-.wrap_info_name{
 
-}
 .width_in{
-  /* width: 66px;
-  height: 66px; */
-  width: 50px;
-  height: 50px;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
-  margin-right: 16px;
+  margin-right: 32rpx;
 }
 .text_vip{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #101010;
   /* color: #fff; */
-  margin-bottom: 4px;
+  margin-bottom: 8rpx;
 }
 .text_font{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #6F6F6F;
 }
 .data_info{
   text-align: center;
-  font-size: 14px;
+  font-size: 28rpx;
   color: #101010;
 }
 .data_img{
-  width: 40px;
-  height: 40px;
+  width: 80rpx;
+  height: 80rpx;
 }
 .out{
   margin: 0 auto;
@@ -70,7 +64,7 @@
 .btn_out{
    background-color: #0540B7;
    color: #fff;
-   font-size: 14px;
+   font-size: 28rpx;
 }
 .moudel{
   width: 100vw;
@@ -84,26 +78,24 @@
   align-items: center;
 }
 .moudel_wrap{
-  width: 286px;
+  width: 572rpx;
   background-color: #FFF;
-  padding: 26px;
-  padding-top: 16px;
+  padding: 52rpx;
+  padding-top: 32rpx;
 
 }
 .moudel_pay{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #101010;
   display: flex;
- /* align-items: center; */
- margin-bottom: 8px;
+ margin-bottom: 16rpx;
 }
 .moudel_text{
-  width: 80px;
-  margin-right: 6px;
-  /* text-align: center; */
+  width: 120rpx;
+  margin-right: 12rpx;
 }
 .size_flex{
-  margin-top: 10px;
+  margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
 }
@@ -113,8 +105,8 @@
 }
 .rz_x{
   text-align: center;
-  font-size: 16px;
+  font-size: 32rpx;
   color: #101010;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 24rpx;
 }

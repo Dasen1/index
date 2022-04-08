@@ -1,12 +1,23 @@
 <!-- index.wxml -->
 <view>
+    <!-- 自定义导航 -->
+    <view class="custom_head" style="height:{{globalData.navHeight}}px;">
+        <view class="flex-row j_b" style="height:{{globalData.navObj}}px;padding-top:{{globalData.navTop}}px;padding-right:{{globalData.navObjWid+5}}px;">
+            <view class="head_store text_ellipsis"></view>
+            <view class="head_vpn">
+                 <image class="img_vs" src="../../image/title.png" />
+               <view>佛燃绿能贷</view>
+              
+            </view>
+        </view>
+    </view>
     <view class="bg_wrap" bindtap="">
         <!-- <view class="page-body"> -->
         <view class="page-section page-section-spacing swiper">
-            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper catchtap="onSwiperTap" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
                 <block wx:for="{{background}}" wx:key="*this">
                     <swiper-item>
-                        <image class="data_img" src="{{item}}" alt="" />
+                        <image data-Id="{{item.id}}" class="data_img" src="{{item.img_url}}" alt="" />
                         <!-- <view class="swiper-item {{item}}">{{item}}</view> -->
                     </swiper-item>
                 </block>

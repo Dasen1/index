@@ -1,5 +1,5 @@
 // pages/mobilelogin/mobilelogin.js
-import {postSendCode,postPhoneLogin} from "../../api/order"
+import { postSendCode, postPhoneLogin, postByToken } from "../../api/order"
 let phoneNumber = ""
 let phoneCode = ""
 let sendScene = "CUSTOMER_PHONE_LOGIN"  //短信验证场景
@@ -12,30 +12,30 @@ Page({
     isShow: false
 
   },
-  getPhoneNumber(e){
+  getPhoneNumber(e) {
     // 获取输入手机号
     phoneNumber = e.detail.value
-    console.log(e.detail.value,"手机号")
+    console.log(e.detail.value, "手机号")
   },
- getPhoneCode(e){
+  getPhoneCode(e) {
     // 获取输入验证码
     phoneCode = e.detail.value
-    
+
   },
   // 获取验证码
- async sendPhoneCode(){
-    if(!phoneNumber){
-       wx.showToast({
-        title:"请先输入手机号",
+  async sendPhoneCode() {
+    if (!phoneNumber) {
+      wx.showToast({
+        title: "请先输入手机号",
         icon: 'none',
         duration: 1500
       })
       return
     }
-    try{
-      const data = await postSendCode({sendScene:sendScene,phoneNumber:phoneNumber})
+    try {
+      const data = await postSendCode({ sendScene: sendScene, phoneNumber: phoneNumber })
 
-    }catch(e){
+    } catch (e) {
       console.log(e)
     }
   },
@@ -52,39 +52,47 @@ Page({
   },
 
   // 登录
-async  loadByPhone(){
-  if(!phoneNumber){
-    wx.showToast({
-     title:"请先输入手机号",
-     icon: 'none',
-     duration: 1500
-   })
-   return
-  }
-  if(!phoneCode){
-    wx.showToast({
-     title:"请先输入手机验证码",
-     icon: 'none',
-     duration: 1500
-   })
-   return
-  }
-  if(!this.data.isShow){
-    wx.showToast({
-      title:"请先同意用户手册",
-      icon: 'none',
-      duration: 1500
-    })
-    return
-  }
+  async loadByPhone() {
+    if (!phoneNumber) {
+      wx.showToast({
+        title: "请先输入手机号",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    if (!phoneCode) {
+      wx.showToast({
+        title: "请先输入手机验证码",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    if (!this.data.isShow) {
+      wx.showToast({
+        title: "请先同意用户手册",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
 
-   try{
-     const datas =await postPhoneLogin({phoneNumber:phoneNumber ,verifyCode:phoneNumber})
-     console.log(datas,"这是什么")
-   }catch(e){
+    try {
+      //  获取token  通过token获取用户讯息
+      const dataToken = await postPhoneLogin({ phoneNumber: phoneNumber, verifyCode: phoneCode })
+      console.log(dataToken, "内容")
+      wx.setStorageSync('token', dataToken)  //存储token
+      const dataInfo = await postByToken()
+      wx.setStorageSync('info', dataInfo)  //存储用户信息
+      // 跳转首页
+       wx.switchTab({
+              url: `/pages/index/index`,
+            })
+    } catch (e) {
 
-   }
-   
+    }
+
   },
 
   /**
