@@ -5,9 +5,7 @@ const app = getApp()
 
 Page({
   data: {
-    background: [{ img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F0F220092145%2F200F2092145-4-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=5b3595175a3be9cdd27898d4cb0f421b', id: 1 },
-    { img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1.lanrentuku.com%2F2020%2F7%2F11%2Fe23bfa96-6f7c-4c05-b4e7-0ee93d656d9f.jpg&refer=http%3A%2F%2Fi-1.lanrentuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=a73bf8aa9bdcb0d7046027bebf81f63c', id: 2 },
-    { img_url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F041620104229%2F200416104229-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650879514&t=3d8baeb87c190b1d0814aae0db3494fc', id: 3 }],
+    background_img: [],
     indicatorDots: true,
     vertical: false,
     autoplay: false,
@@ -58,22 +56,27 @@ Page({
       })
       return
     }
-     this.getImagePage()
     // 页面加载请求轮播
+     this.getImagePage()
+    
    
   },
   onLoad() {
+
   },
+  // 点击图片跳转链接
   onSwiperTap(e) {
-    console.log(e, "gagag")
+    wx.navigateTo({
+      url: "/pages/out/out?skiplinkurl="+ e.target.dataset.skiplinkurl
+    })
   },
 
-  // 页面加载调用轮播
+  // 页面加载获取轮播图
   async getImagePage() {
-
-    let data = await getImageList()
-    console.log(data, "这返回的数据")
-
+    let {list} = await getImageList()
+    this.setData({
+      background_img:list
+     })
   },
 
 

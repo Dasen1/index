@@ -12,12 +12,12 @@
         </view>
     </view>
     <view class="bg_wrap" bindtap="">
-        <!-- <view class="page-body"> -->
+            <!-- 轮播图 -->
         <view class="page-section page-section-spacing swiper">
             <swiper catchtap="onSwiperTap" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-                <block wx:for="{{background}}" wx:key="*this">
+                <block wx:for="{{background_img}}" wx:key="*this">
                     <swiper-item>
-                        <image data-Id="{{item.id}}" class="data_img" src="{{item.img_url}}" alt="" />
+                        <image data-skipLinkUrl="{{item.skipLinkUrl}}" data-Id="{{item.id}}" class="data_img" src="{{item.imageUrl}}" alt="" />
                         <!-- <view class="swiper-item {{item}}">{{item}}</view> -->
                     </swiper-item>
                 </block>
