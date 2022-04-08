@@ -5,15 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:false
-
+    isShow:false,
+    isShowData:false
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      isShow: false
+    })
+    const token = wx.getStorageSync('token')
+    if (!token) {
+      this.setData({
+        isShow: true
+      })
+      return
+    }
   },
 
   /**
@@ -124,14 +134,14 @@ Page({
   // 信息修改
   infoUpdata(){
     this.setData({
-      isShow:true
+      isShowData:true
      })
   },
 
   // 好的按钮
    onayClick(){
      this.setData({
-      isShow:false
+      isShowData:false
      })
    }
 })

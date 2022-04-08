@@ -75,6 +75,7 @@ Component({
             this.setData({
               isShow: false
             })
+            this.triggerEvent('callSomeFun')
           } catch (e) {
             console.log(e,)
             // this.setData({

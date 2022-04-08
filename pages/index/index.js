@@ -28,6 +28,10 @@ Page({
   },
 
   onShow() {
+    // 页面进来先默认不展开
+    this.setData({
+      isShow: false
+    })
     // 获取顶部胶囊详细信息
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -41,7 +45,6 @@ Page({
          this.data.globalData.navTop = navTop; //胶囊距离顶部距离
          this.data.globalData.navObj = menuButtonObject.height; //胶囊高度
          this.data.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-         console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
        },
        fail(err) {
          console.log(err);
@@ -61,7 +64,21 @@ Page({
     
    
   },
-  onLoad() {
+  onLoad(opt) {
+    // 页面刷新时请求
+    this.setData({
+      isShow: false
+    })
+    const token = wx.getStorageSync('token')
+    if (!token) {
+      this.setData({
+        isShow: true
+      })
+      return
+    }
+    // 页面加载请求轮播
+     this.getImagePage()
+    console.log("加载了")
 
   },
   // 点击图片跳转链接
@@ -140,14 +157,5 @@ Page({
     wx.navigateTo({
       url: "/pages/repaymentrecord/repaymentrecord"
     })
-  },
-
-  async dataApi() {
-    // try{
-    //   const orders = await getAllOrder()
-    //   console.log(orders,"这是个啥")
-    // }catch(e){
-    //   console.log(e,"这是请求失败了")
-    // }
   },
 })

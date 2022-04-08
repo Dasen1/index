@@ -47,7 +47,7 @@
     <button class="btn_out" size="mini" bindtap="logoOut">退出登录</button>
   </view>
   <!-- 认证信息弹窗 -->
-  <view class="moudel" wx:if="{{isShow}}">
+  <view class="moudel" wx:if="{{isShowData}}">
     <view class="moudel_wrap">
       <view class="rz_x">认证信息</view>
       <view class="moudel_pay">
@@ -94,4 +94,5 @@
     
     </view>
   </view>
+    <loginpop bind:callSomeFun="onLoad" wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
 </view>

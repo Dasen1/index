@@ -100,5 +100,5 @@
             </view>
         </view>
     </view>
-    <loginpop wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
+    <loginpop bind:callSomeFun="onLoad" wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
 </view>
