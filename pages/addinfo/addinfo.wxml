@@ -15,93 +15,61 @@
       <view>认证完成</view>
     </view>
   </view>
-  <view class="agreement" wx:if="{{isShow == 1}}">
-    <view class="add_info">上传公司信息</view>
+  <view class="agreement" >
+    <!-- <view class="add_info">上传公司信息</view> -->
     <form catchsubmit="formSubmit" catchreset="formReset">
+      <view hidden="{{isShow == 2}}"> 
+      <view class="flex">
+        <view class="flex_wid pde">账号名称</view>
+        <input class="weui-input" value="{{fromPage.name}}" name="name" placeholder="请输入" />
+      </view>
       <view class="flex">
         <view class="flex_wid">公司名称</view>
-        <input class="weui-input" name="name" placeholder="请输入" />
+        <input class="weui-input" value="{{fromPage.bIdType}}"  name="bIdType" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">经销商证件类型</view>
-        <input class="weui-input" name="bIdType" placeholder="请输入" />
+        <view class="flex_wid">纳税人识别号</view>
+        <input class="weui-input" value="{{fromPage.bIdNumber}}" name="bIdNumber" placeholder="请输入" />
       </view>
-      <view class="flex">
-        <view class="flex_wid">统一社会信用代码</view>
-        <input class="weui-input" name="bIdNumber" placeholder="请输入" />
-      </view>
-      <view class="flex">
+       <view class="flex">
         <view class="flex_wid">燃气公司</view>
-        <picker name="input" class="weui-input" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-          <view class="picker">{{array[index]}}</view>
-        </picker>
+        <view class="weui-cells weui-cells_after-title">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{itemsDeta}}" wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </checkbox-group>
       </view>
-      <view class="flex">
-        <view class="flex_wid">营业执照期限</view>
-        <input class="weui-input" name="certDueDate" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">行业类别</view>
-        <input class="weui-input" name="tradeType" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">客户类别</view>
-        <input class="weui-input" name="registerType" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">账户开户行行号</view>
-        <input class="weui-input" name="accountNode" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">账户号</view>
-        <input class="weui-input" name="accountNo" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">账户名</view>
-        <input class="weui-input" name="accountName" placeholder="请输入" />
-      </view>
-      <!-- <view class="flex">
-        <view class="flex_wid">手机号</view>
-        <input class="weui-input" name="telephone" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">联系地址</view>
-        <input class="weui-input" name="address" placeholder="请输入" />
       </view>
       <view class="flex">
         <view class="flex_wid">法人姓名</view>
-        <input class="weui-input" name="frName" placeholder="请输入" />
+        <input class="weui-input" value="{{fromPage.certDueDate}}" name="certDueDate" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">法人证件类型</view>
-        <input class="weui-input" name="frIdType" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">法人证件号码</view>
-        <input class="weui-input" name="frIdNumber" placeholder="请输入" />
+        <view class="flex_wid">法人身份证号</view>
+        <input class="weui-input" value="{{fromPage.tradeType}}" name="tradeType" placeholder="请输入" />
       </view>
       <view class="flex">
         <view class="flex_wid">法人手机号</view>
-        <input class="weui-input" name="frPhone" placeholder="请输入" />
+        <input class="weui-input" value="{{fromPage.registerType}}" name="registerType" placeholder="请输入" />
       </view>
-      <view class="flex">
-        <view class="flex_wid">法人证件到期日</view>
-        <input class="weui-input" name="idDueDate" placeholder="请输入" />
+      
+      </view>
+      
+      <view  hidden="{{isShow == 1}}">
+         <view class="flex">
+        <view class="flex_wid">申请人手机号</view>
+        <input class="weui-input" name="frName" value="{{fromPage.frName}}" placeholder="请输入" />
       </view>
       <view class="flex">
         <view class="flex_wid">手机验证码</view>
-        <input class="weui-input views" name="input" placeholder="请输入" />
+        <input class="weui-input views" name="inputCode" placeholder="请输入" />
         <button class="but_pd" size="mini">点击发送</button>
-      </view> -->
-      <view class="dev_btn">
-        <button type="primary" size="mini" formType="submit">下一步</button>
       </view>
-    </form>
-  </view>
-  <view class="agreement" wx:else>
-    <view class="add_info">法人及申请人信息</view>
-    <form catchsubmit="formSubmitInfo" catchreset="formResetInfo">
-      <view class="flex">
+        <view class="flex">
         <view class="flex_wid">法人本人申请</view>
         <radio-group bindchange="radioChange">
           <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
@@ -112,51 +80,21 @@
           </label>
         </radio-group>
       </view>
-      <view class="flex">
-        <view class="flex_wid">法人姓名</view>
-        <input class="weui-input" name="frName" placeholder="请输入" />
       </view>
-      <view class="flex">
-        <view class="flex_wid">法人证件类型</view>
-        <input class="weui-input" name="frIdType" placeholder="请输入" />
+
+       <view>上次附件</view>
+        <view>营业执照</view>
+        <view>法人身份证头像面</view>
+         <view>国徽面</view>
+      <view class="dev_btn" hidden="{{isShow == 2}}">
+        <button type="primary" size="mini" bindtap="nextTop" >下一步</button>
       </view>
-      <view class="flex">
-        <view class="flex_wid">法人身份证号</view>
-        <input class="weui-input" name="frIdNumber" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">法人证件到期日</view>
-        <input class="weui-input" name="idDueDate" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">法人手机号</view>
-        <input class="weui-input" name="telephone" placeholder="请输入" />
-      </view>
-      <!-- <view class="flex">
-        <view class="flex_wid">联系地址</view>
-        <input class="weui-input" name="address" placeholder="请输入" />
-      </view> -->
-      <view class="flex">
-        <view class="flex_wid">被授权人姓名</view>
-        <input class="weui-input" name="frPhone" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">被授权人身份证号</view>
-        <input class="weui-input" name="frPhone" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">被授权人手机号</view>
-        <input class="weui-input" name="frPhone" placeholder="请输入" />
-      </view>
-      <view class="flex">
-        <view class="flex_wid">手机验证码</view>
-        <input class="weui-input views" name="input" placeholder="请输入" />
-        <button class="but_pd" size="mini">点击发送</button>
-      </view>
-      <view class="dev_btn">
-        <!-- <button type="primary" size="mini" bindtap="lastStep">上一步</button> -->
-        <button type="primary" size="mini" formType="submit">下一步</button>
+       <view class="dev_btn" hidden="{{isShow == 1}}">
+           <button type="primary" size="mini" bindtap="lastStep">上一步</button>
+        <button type="primary" size="mini" formType="submit">提交</button>
       </view>
     </form>
+   
   </view>
+ 
 </view>

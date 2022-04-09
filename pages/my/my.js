@@ -37,7 +37,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      isShow: false
+    })
+    const token = wx.getStorageSync('token')
+    if (!token) {
+      this.setData({
+        isShow: true
+      })
+      return
+    }
   },
 
   /**

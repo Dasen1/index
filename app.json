@@ -13,12 +13,13 @@
     "pages/repayment/repayment",
     "pages/repaymentrecord/repaymentrecord",
     "pages/billcredit/billcredit",
-    "pages/out/out"
+    "pages/out/out",
+    "pages/personaldata/personaldata"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "one Day",
+    "navigationBarTitleText": "佛然绿能贷",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
