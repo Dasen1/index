@@ -1,54 +1,54 @@
 /* pages/info/info.wxss */
 
 .time_a{
-  padding: 20px;
+  padding: 40rpx;
   /* height: 100vh; */
   /* overflow-y: auto; */
   /* background-color: #c2c4c6; */
 }
 .margin{
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 .color{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #101010;
-  padding-right: 10px;
+  padding-right: 20rpx;
 }
 .size{
-  font-size:13px;
+  font-size:26rpx;
   color: #8a8a8a;
 }
 .set_v{
-  width: 303px;
+  width: 606rpx;
   /* margin: 0 auto; */
   box-sizing: border-box;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.4);
   background-color: #c2c4c6;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 16rpx;
+  font-size: 28rpx;
   color: #101010;
-  margin-bottom:20px;
+  margin-bottom:40rpx;
 }
 .color_rod{
  display: flex;
  /* justify-content: center; */
 }
 .color_w{
-  margin-top: 14px;
-  margin-right: 4px;
-  width: 8px;
-  height: 8px;
+  margin-top: 28rpx;
+  margin-right: 8rpx;
+  width: 16rpx;
+  height: 16rpx;
   border-radius: 50%;
   background-color: red;
 }
 .nome{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #000;
   text-align: center;
 }
 .nomeset{
   text-align: center;
-  font-size: 14px;
+  font-size: 28rpx;
   color: #000;
 }

@@ -1,1 +1,67 @@
 /* pages/repayment/repayment.wxss */
+
+.time_a {
+  height: 100vh;
+  overflow: auto;
+  padding: 40rpx;
+  font-size: 28rpx;
+  background-color: #EFEFEF;
+}
+
+.nome {
+  font-size: 28rpx;
+  color: #000;
+  text-align: center;
+}
+
+.nomeset {
+  text-align: center;
+  font-size: 28rpx;
+  color: #000;
+}
+
+.info_vh {
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bpv_play {
+  display: flex;
+  justify-content:flex-end;
+  margin-top: 8rpx;
+}
+.bpv_play_ah{
+  width: 160rpx;
+  height: 60rpx;
+  background-color: #aaa;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.data_vwe{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 30rpx;
+  margin-bottom: 20rpx;
+}
+.picker{
+  margin-bottom: 40rpx;
+}
+.deta_page{
+  width: 300rpx;
+  height: 60rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16rpx;
+}
+.flex_d{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

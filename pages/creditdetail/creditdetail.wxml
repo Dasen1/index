@@ -1,0 +1,20 @@
+<!-- pages/creditdetail/creditdetail.wxml -->
+<view class="time_a">
+  <view wx:if="{{dataList.length}}">
+    <view wx:for="{{dataList}}">
+      <view class="heade_vh" wx:key="{{index}}">
+        <view>
+           还款日期：{{item.repaymentTime}}
+          </view>
+            <view>
+           还款金额：{{item.repaymentAmount}}
+          </view>
+            <view>
+           还款状态：{{item.repaymentStatus==1?"已还":item.repaymentStatus==2?"未还":""}}
+          </view>
+      </view>
+    </view>
+     <view class="nome">没有更多了</view>
+  </view>
+  <view wx:else class="nomeset">暂无数据</view>
+</view>

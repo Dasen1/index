@@ -93,7 +93,10 @@ Page({
     // 获取燃气公司跟纳税人识别号一起传后端才能进行下一步
     console.log(e.detail.value,"啥啊这是")
   },
-
+  // 上传图片及附件
+  dataApd(){
+    console.log("123")
+  },
 
   // 点击下一步校验纳税人识别号跟燃气公司是否匹配
   nextTop(){
