@@ -10,6 +10,15 @@ export function getRepaymentPlan(data) {
   },"isToken") 
 }
 
+export function getBankListPage(data) {
+  //分页获取银行列表
+  return request({
+    url: '/bank/list/page',
+    method: 'get',
+    data,
+  },"isToken") 
+}
+
 export function getRepaymentRecord(data) {
   // 还款明细列表
   return request({

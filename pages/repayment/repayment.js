@@ -1,29 +1,12 @@
 // pages/repayment/repayment.js
-import {getRepaymentPlan} from "../../api/repaymentPlan"
+import {getRepaymentPlan,getBankListPage} from "../../api/repaymentPlan"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bjectArray: [
-      {
-        id: 5,
-        name: '美国'
-      },
-      {
-        id: 2,
-        name: '中国'
-      },
-      {
-        id: 3,
-        name: '巴西'
-      },
-      {
-        id: 1,
-        name: '日本'
-      }
-    ],
+    bjectArray: [],
     index:0,
     bjectArrayId: [
       {
@@ -49,7 +32,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.repayment()
+    this.getPageBack()
+    //  this.repayment()
   },
 
 
@@ -114,8 +98,23 @@ Page({
 
   // 页面加载获取分页
   repayment:async function(){
+    // 当前选中的银行
+    let dataId
+      this.data.bjectArray.map((item,index)=>{
+             if(index == this.data.index){
+              dataId = item.id
+             }
+      })
+      // 当前选中的状态
+    let dataIndex
+      this.data.bjectArrayId.map((item,index)=>{
+        if(index == this.data.indexId){
+          dataIndex = item.id
+         }
+      })
+    // console.log(id,"啥啊")
     try {
-      const orders = await getRepaymentPlan({ pageNum: this.data.pageNum})
+      const orders = await getRepaymentPlan({repaymentStatus:dataIndex,companyId:dataId, pageNum: this.data.pageNum})
       this.setData({
         dataList: this.data.dataList.concat(orders.list),
         pageNum: orders.pageNum,
@@ -135,29 +134,35 @@ Page({
     },
 
     // 点击切换银行
-    bindPickerChange: function (e) {
-      console.log("选中的id值:"+e.target.dataset.id)
-      console.log(e);
+    bindPickerChange:async function (e) {
       this.setData({
         index: e.detail.value
       })
-      // console.log('picker发送选择改变，携带值为', e.detail.value)
-      // this.setData({
-      //   index: e.detail.value
-      // })
+      this.repayment()
     },
      // 点击切换状态
      bindPickerChangeId: function (e) {
-      console.log("选中的id值:"+e.target.dataset.id)
-      console.log(e);
       this.setData({
         indexId: e.detail.value
       })
-      // console.log('picker发送选择改变，携带值为', e.detail.value)
-      // this.setData({
-      //   index: e.detail.value
-      // })
+      this.repayment()
     },
+    // 页面加载获取银行
+    getPageBack:async function(){
+      let page = await getBankListPage()
+       let dataList = []
+       page.list.map((item)=>{
+           let aw  ={
+            name: item.bankName,
+            id:item.id
+           }
+           dataList.push(aw)
+       })
+       this.setData({
+        bjectArray:dataList
+       })
+       this.repayment()
+    }
 
 
 })

@@ -1,6 +1,6 @@
 <!-- pages/repayment/repayment.wxml -->
 <view class="time_a">
-  <view class="flex_d">
+  <view wx:if="{{bjectArray.length}}" class="flex_d">
     <picker bindchange="bindPickerChange" value="{{index}}" range-key="name" data-id='{{bjectArray[index].id}}' range="{{bjectArray}}">
     <view class="picker">
       <view class="deta_page">{{bjectArray[index].name}}</view>
