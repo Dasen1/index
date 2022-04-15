@@ -27,3 +27,22 @@ export function getRepaymentRecord(data) {
     data,
   },"isToken") 
 }
+
+// 贷款记录
+export function getLoanRecordList(data) {
+  // 贷款记录列表
+  return request({
+    url: '/loan/record/list/page',
+    method: 'get',
+    data,
+  },"isToken") 
+}
+export function getLoanRecordInfo(id) {
+  // 贷款记录详情
+  return request({
+    url: `/loan/record/info/${id}`,
+    method: 'get',
+    // data,
+  },"isToken") 
+}
+

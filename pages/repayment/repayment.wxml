@@ -2,28 +2,32 @@
 <view class="time_a">
   <view wx:if="{{bjectArray.length}}" class="flex_d">
     <picker bindchange="bindPickerChange" value="{{index}}" range-key="name" data-id='{{bjectArray[index].id}}' range="{{bjectArray}}">
-    <view class="picker">
-      <view class="deta_page">{{bjectArray[index].name}}</view>
-       <!-- <view class="deta_page"></view> -->
-    </view>
-  </picker>
-  <picker bindchange="bindPickerChangeId" value="{{indexId}}" range-key="name" data-id='{{bjectArrayId[indexId].id}}' range="{{bjectArrayId}}">
-    <view class="picker">
-      <view class="deta_page">{{bjectArrayId[indexId].name}}</view>
-       <!-- <view class="deta_page"></view> -->
-    </view>
-  </picker>
+      <view class="picker">
+        <view class="deta_page">{{bjectArray[index].name}}</view>
+        <!-- <view class="deta_page"></view> -->
+      </view>
+    </picker>
+    <picker bindchange="bindPickerChangeId" value="{{indexId}}" range-key="name" data-id='{{bjectArrayId[indexId].id}}' range="{{bjectArrayId}}">
+      <view class="picker">
+        <view class="deta_page">{{bjectArrayId[indexId].name}}</view>
+        <!-- <view class="deta_page"></view> -->
+      </view>
+    </picker>
   </view>
   <view wx:if="{{dataList.length}}">
-    <view wx:for="{{dataList}}" >
+    <view wx:for="{{dataList}}">
       <view class="data_vwe" wx:key="{{index}}">
-         <view class="info_vh">
-          <text >贷款流水号：{{item.loanSerialNumber}}</text>
-         <view class="bpv_play_ah" data-companyId="{{item.companyId}}" bindtap="creditRecord">还款明细</view>
+        <view class="info_vh">
+          <text>贷款流水号：{{item.flowId}}</text>
+          <view class="bpv_play_ah" data-companyId="{{item.companyId}}" bindtap="creditRecord">
+            还款明细
+          </view>
         </view>
         <view class="info_vh">
-          <text >贷款金额：{{item.loanAmount}}</text>
-           <text >贷款日期：{{item.loanTime}}</text>
+          <text>贷款金额：{{item.loanAmount}}</text>
+        </view>
+        <view class="info_vh">
+          <text>贷款日期：{{item.loanTime}}</text>
         </view>
       </view>
     </view>

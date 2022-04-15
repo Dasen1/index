@@ -15,7 +15,8 @@
     "pages/billcredit/billcredit",
     "pages/out/out",
     "pages/personaldata/personaldata",
-    "pages/creditdetail/creditdetail"
+    "pages/creditdetail/creditdetail",
+    "pages/loansrecordDetail/loansrecordDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",

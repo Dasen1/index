@@ -1,0 +1,30 @@
+/* pages/loansrecordDetail/loansrecordDetail.wxss */
+.page_wrap{
+  height: 100vh;
+  overflow: auto;
+  /* box-sizing: border-box; */
+  /* padding: 40rpx; */
+  background-color: #EFEFEF;
+}
+.page_view{
+  width: 100%;
+  background: #fff;
+}
+.page_list{
+  padding: 30rpx 30rpx;
+  /* margin-bottom: 40rpx; */
+  border-bottom: 1rpx solid rgb(187, 187, 187);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+}
+.page_flex{
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  color: #0292F2;
+  font-size: 28rpx;
+  padding: 30rpx 30rpx;
+  text-align: right;
+}

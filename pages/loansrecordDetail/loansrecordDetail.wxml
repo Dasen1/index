@@ -1,0 +1,42 @@
+<!--pages/loansrecordDetail/loansrecordDetail.wxml-->
+<view class="page_wrap">
+  <view class="page_view">
+    <view class="page_list">
+      <view >贷款流水号</view>
+       <view >{{dataList.flowId}}</view>
+    </view>
+    <view class="page_list">
+      <view >贷款银行</view>
+       <view >{{dataList.bankName}}</view>
+    </view>
+    <view class="page_list">
+      <view >贷款时间</view>
+       <view >{{dataList.loanTime}}</view>
+    </view>
+    <view class="page_list">
+      <view >贷款金额</view>
+       <view >￥{{dataList.loanAmount}}元</view>
+    </view>
+    <view class="page_list">
+      <view >还款期数</view>
+       <view >{{dataList.loanTime}}</view>
+    </view>
+    <view class="page_list">
+      <view >计息方式</view>
+       <view >{{dataList.loanTime}}</view>
+    </view>
+    <view class="page_list">
+      <view >贷款年利率</view>
+       <view >{{dataList.loanTime}}</view>
+    </view>
+    <view class="page_list">
+      <view >贷款状态</view>
+       <view >{{dataList.loanAuditStatus==1?"审核中":dataList.loanAuditStatus==2?
+         "审核通过":dataList.loanAuditStatus==3?"审核失败":""}}</view>
+    </view>
+    <view class="page_flex">
+      <view >快捷还款</view>
+       <!-- <view >浙商银行</view> -->
+    </view>
+  </view>
+</view>

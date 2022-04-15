@@ -24,7 +24,6 @@ Page({
     this.infoList()
   },
   infoList: async function () {
-    // console.log(this.data.pageNum, "多少")
     try {
       wx.showLoading({
         title: '加载中',
@@ -80,9 +79,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log("到底了么")
     let index = this.data.pageNum
-    console.log(index + 1, "啥啊")
     this.setData({
       pageNum: index + 1
     })
@@ -91,8 +88,6 @@ Page({
         nomore:true
       })
     }
-
-    console.log(this.data.pageNum, "多少ee")
     this.infoList()
 
     // var DATA = this.data.DATA.concat(this.data.DATA2)

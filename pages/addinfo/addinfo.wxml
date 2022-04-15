@@ -40,8 +40,8 @@
           <input class="weui-input" value="{{fromPage.bossIdCardNumber}}" name="bossIdCardNumber" placeholder="请输入" />
         </view>
         <view class="flex">
-          <view class="flex_wid" type="number" maxlength="11" >法人手机号</view>
-          <input class="weui-input" value="{{fromPage.registerType}}" name="registerType" placeholder="请输入" />
+          <view class="flex_wid">法人手机号</view>
+          <input class="weui-input" type="number" maxlength="11" value="{{fromPage.registerType}}" name="registerType" placeholder="请输入" />
         </view>
         <view class="flex">
           <view class="flex_wid">燃气公司</view>

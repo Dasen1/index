@@ -1,5 +1,5 @@
 // pages/repayment/repayment.js
-import {getRepaymentPlan,getBankListPage} from "../../api/repaymentPlan"
+import { getRepaymentPlan, getBankListPage } from "../../api/repaymentPlan"
 Page({
 
   /**
@@ -7,7 +7,7 @@ Page({
    */
   data: {
     bjectArray: [],
-    index:0,
+    index: 0,
     bjectArrayId: [
       {
         id: 1,
@@ -18,14 +18,14 @@ Page({
         name: '已结清'
       },
     ],
-    indexId:0,
+    indexId: 0,
 
 
     dataList: [],
     // 默认当前页
     pageNum: 1,
-    total:0,
-    nomore :false,
+    total: 0,
+    nomore: false,
   },
 
   /**
@@ -81,9 +81,9 @@ Page({
     this.setData({
       pageNum: index + 1
     })
-    if(this.data.dataList.length >= this.data.total){
+    if (this.data.dataList.length >= this.data.total) {
       return this.setData({
-        nomore:true
+        nomore: true
       })
     }
     this.repayment()
@@ -97,72 +97,71 @@ Page({
   },
 
   // 页面加载获取分页
-  repayment:async function(){
+  repayment: async function () {
     // 当前选中的银行
     let dataId
-      this.data.bjectArray.map((item,index)=>{
-             if(index == this.data.index){
-              dataId = item.id
-             }
-      })
-      // 当前选中的状态
+    this.data.bjectArray.map((item, index) => {
+      if (index == this.data.index) {
+        dataId = item.id
+      }
+    })
+    // 当前选中的状态
     let dataIndex
-      this.data.bjectArrayId.map((item,index)=>{
-        if(index == this.data.indexId){
-          dataIndex = item.id
-         }
-      })
-    // console.log(id,"啥啊")
+    this.data.bjectArrayId.map((item, index) => {
+      if (index == this.data.indexId) {
+        dataIndex = item.id
+      }
+    })
     try {
-      const orders = await getRepaymentPlan({repaymentStatus:dataIndex,companyId:dataId, pageNum: this.data.pageNum})
+      const orders = await getRepaymentPlan({ repaymentStatus: dataIndex, companyId: dataId, pageNum: this.data.pageNum })
       this.setData({
         dataList: this.data.dataList.concat(orders.list),
         pageNum: orders.pageNum,
-        total:orders.total
+        total: orders.total
       })
-    }catch (e) {
+    } catch (e) {
       console.log(e)
     }
   },
 
   // 点击跳转详情
-  creditRecord:function(e){
-   // 还款记录详情
+  creditRecord: function (e) {
+    // 还款记录详情
     wx.navigateTo({
-        url: "/pages/creditdetail/creditdetail?companyid="+ e.target.dataset.companyid
+      url: "/pages/creditdetail/creditdetail?companyid=" + e.target.dataset.companyid
     })
-    },
+  },
 
-    // 点击切换银行
-    bindPickerChange:async function (e) {
-      this.setData({
-        index: e.detail.value
-      })
-      this.repayment()
-    },
-     // 点击切换状态
-     bindPickerChangeId: function (e) {
-      this.setData({
-        indexId: e.detail.value
-      })
-      this.repayment()
-    },
-    // 页面加载获取银行
-    getPageBack:async function(){
-      let page = await getBankListPage()
-       let dataList = []
-       page.list.map((item)=>{
-           let aw  ={
-            name: item.bankName,
-            id:item.id
-           }
-           dataList.push(aw)
-       })
-       this.setData({
-        bjectArray:dataList
-       })
-       this.repayment()
-    }
+  // 点击切换银行
+  bindPickerChange: async function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+    this.repayment()
+  },
+  // 点击切换状态
+  bindPickerChangeId: function (e) {
+    this.setData({
+      indexId: e.detail.value
+    })
+    this.repayment()
+  },
+  // 页面加载获取银行
+  getPageBack: async function () {
+    let page = await getBankListPage()
+    let dataList = []
+    page.list.map((item) => {
+      let aw = {
+        name: item.bankName,
+        id: item.id
+      }
+      dataList.push(aw)
+    })
+    this.setData({
+      bjectArray: dataList
+    })
+    this.repayment()
+  }
 
 
 })

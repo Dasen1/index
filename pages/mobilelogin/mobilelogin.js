@@ -15,7 +15,6 @@ Page({
   getPhoneNumber(e) {
     // 获取输入手机号
     phoneNumber = e.detail.value
-    console.log(e.detail.value, "手机号")
   },
   getPhoneCode(e) {
     // 获取输入验证码
@@ -42,13 +41,10 @@ Page({
   // 同意用户手册
   checkboxChange: function (e) {
     if (e.detail.value.includes('1')) {
-      console.log("我选中了")
       this.setData({ isShow: true })
     } else {
-      console.log("我取消了")
       this.setData({ isShow: false })
     }
-    // this.setData({isShow:})
   },
 
   // 登录
@@ -81,7 +77,6 @@ Page({
     try {
       //  获取token  通过token获取用户讯息
       const dataToken = await postPhoneLogin({ phoneNumber: phoneNumber, verifyCode: phoneCode })
-      console.log(dataToken, "内容")
       wx.setStorageSync('token', dataToken)  //存储token
       const dataInfo = await postByToken()
       wx.setStorageSync('info', dataInfo)  //存储用户信息

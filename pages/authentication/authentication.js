@@ -12,27 +12,21 @@ Page({
   // 选中隐私协议
   checkboxChange: function (e) {
     if (e.detail.value.includes('1')) {
-      console.log("我选中了")
       this.setData({ isShow: true })
     } else {
-      console.log("我取消了")
       this.setData({ isShow: false })
     }
-    // this.setData({isShow:})
   },
   setCheckboxChange:function(e){
     if (e.detail.value.includes('2')) {
-      console.log("我选中了")
       this.setData({ setIsShow: true })
     } else {
-      console.log("我取消了")
       this.setData({ setIsShow: false })
     }
   },
   // 正常状态同意
   okayClick: function () {
     if(this.data.isShow){
-      console.log("我点了同意")
       wx.navigateTo({
         url:"/pages/addinfo/addinfo"
       })

@@ -1,18 +1,23 @@
-// pages/billcredit/billcredit.js
+// pages/loansrecordDetail/loansrecordDetail.js
+import { getLoanRecordInfo } from '../../api/repaymentPlan'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShow: false
+       DataId: '',
+       dataList:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      DataId:options.id
+    })
+    this.dataApiDetail()
   },
 
   /**
@@ -63,35 +68,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-
-  // 选中隐私协议
-  checkboxChange: function (e) {
-    if (e.detail.value.includes('1')) {
-      this.setData({ isShow: true })
-    } else {
-      this.setData({ isShow: false })
-    }
-    // this.setData({isShow:})
-  },
-  // 同意
-  okayClick: function () {
-    wx.showToast({
-      title: '授权成功',
-      icon: 'none',
-      duration: 2000
-    })
-    setTimeout(() => {
-      wx.switchTab({  
-        url: `/pages/index/index`,
-      })
-    }, 1500);
-   
-  },
-  okayClick2(){
-    wx.showToast({
-      title: '！请先同意隐私协议',
-      icon: 'none',
-      duration: 2000
-    })
+  // 页面加载获取详情
+  dataApiDetail: async function(){
+   let pageList = await getLoanRecordInfo(this.data.DataId)
+   this.setData({
+    dataList:pageList
+   })
   }
 })

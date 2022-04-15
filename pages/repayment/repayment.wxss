@@ -24,6 +24,7 @@
   margin-top: 10rpx;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .bpv_play {

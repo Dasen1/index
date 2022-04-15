@@ -1,2 +1,29 @@
 <!--pages/loansrecord/loansrecord.wxml-->
-<text>贷款记录</text>
+<view class="page_wrap">
+ 
+ <view wx:if="{{dataList.length}}">
+ <view class="page_view" wx:for="{{dataList}}" wx:key="{{index}}">
+    <view class="page_flex">
+      <view >贷款流水号</view>
+      <view >{{item.flowId}}</view>
+    </view>
+     <view class="page_flex">
+      <view >贷款银行</view>
+      <view >{{item.bankName}}</view>
+    </view>
+     <view class="page_flex">
+      <view >贷款时间</view>
+      <view >{{item.loanTime}}</view>
+    </view>
+     <view class="page_flex">
+      <view >贷款金额</view>
+      <view >￥{{item.loanAmount}}元</view>
+    </view>
+     <view class="page_right" data-id="{{item.id}}" bindtap="clickDetail">
+       <view >明细</view>
+    </view>
+   </view>
+   <view class="nome" wx:if="{{nomore}}">没有更多了</view>
+ </view>
+  <view wx:else class="nomeset">暂无数据</view>
+</view>

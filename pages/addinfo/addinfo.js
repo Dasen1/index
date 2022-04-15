@@ -96,7 +96,6 @@ Page({
   // 燃气公司选择
   checkboxChange: function (e) {
     // 获取燃气公司跟纳税人识别号一起传后端才能进行下一步
-    console.log(e.detail.value, "啥啊这是")
     this.data.fromPage.rouderList = e.detail.value
   },
   // 上传图片及附件
@@ -110,7 +109,7 @@ Page({
     if (this.data.isShow == 2) {
       let list = e.detail.value
       let listNew = this.data.fromPage
-      if (!this.pageIsShow) {
+      if (listNew.legalIsShow==1) {
         if (!list.applyPhoneNumber) {
           return wx.showToast({
             title: "请输入手机号!",
@@ -126,7 +125,7 @@ Page({
           })
         }
       } else {
-        if (!this.pageIsShow) {
+        if (listNew.legalIsShow==2) {
           if (!list.applyPhoneNumber) {
             return wx.showToast({
               title: "请输入手机号!",

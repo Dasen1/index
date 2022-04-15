@@ -78,7 +78,6 @@ Page({
     }
     // 页面加载请求轮播
      this.getImagePage()
-    console.log("加载了")
 
   },
   // 点击图片跳转链接

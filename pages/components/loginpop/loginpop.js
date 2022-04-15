@@ -1,5 +1,5 @@
 // pages/components/midpag.js
-import { postOpinInfo, postByToken,postSendCode } from "../../../api/order"
+import { postOpinInfo, postByToken, postSendCode } from "../../../api/order"
 Component({
   /**
    * 组件的属性列表
@@ -9,7 +9,7 @@ Component({
       type: Boolean,
       value: true
     },
-    isShow:{
+    isShow: {
       type: Boolean,
       value: true
     }
@@ -24,13 +24,11 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      // console.log("走了么1")
     },
     moved: function () {
-      // console.log("走了么2")
     },
     detached: function () {
-      // console.log("走了么3")
+
     },
   },
   pageLifetimes: {
@@ -39,10 +37,10 @@ Component({
 
     },
     hide: function () {
-      // console.log("走了么啊2")
+
     },
     resize: function () {
-      // console.log("走了么啊3")
+
     },
   },
   /**
@@ -50,12 +48,10 @@ Component({
    */
   methods: {
     // 获取手机号登录
-    handleGetPhoneNumber: function(e) {
-      console.log(e,"这是什么东西")
-      let res =e.detail
+    handleGetPhoneNumber: function (e) {
+      let res = e.detail
       wx.login({
         success: async code => {
-          console.log(code, "这是code")
           let data = {}
           data.code = code.code
           // data.rawData = res.rawData
@@ -67,7 +63,6 @@ Component({
             wx.setStorageSync('token', orders)
             // 接口请求成功跳转首页关闭弹窗
             const dataInfo = await postByToken()
-            console.log(dataInfo, "这是token")
             wx.setStorageSync('info', dataInfo)
             // wx.switchTab({
             //   url: `/pages/index/index`,
@@ -91,10 +86,8 @@ Component({
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
-          console.log(res, "这是啥")
           wx.login({
             success: async code => {
-              console.log(code, "这是code")
               let data = {}
               data.code = code.code
               data.rawData = res.rawData
