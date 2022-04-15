@@ -33,7 +33,6 @@ Page({
    */
   onLoad: function (options) {
     this.getPageBack()
-    //  this.repayment()
   },
 
 
@@ -117,16 +116,24 @@ Page({
       this.setData({
         dataList: this.data.dataList.concat(orders.list),
         pageNum: orders.pageNum,
-        total: orders.total
+        total: orders.total,
       })
     } catch (e) {
       console.log(e)
     }
   },
-
+ // 切换选择清空页面数据
+ updata() {
+  this.setData({
+    dataList: [],
+    pageNum: 1,
+    total: 0,
+    nomore: false,
+  })
+},
   // 点击跳转详情
   creditRecord: function (e) {
-    // 还款记录详情
+    // 还款计划详情
     wx.navigateTo({
       url: "/pages/creditdetail/creditdetail?companyid=" + e.target.dataset.companyid
     })
@@ -137,6 +144,7 @@ Page({
     this.setData({
       index: e.detail.value
     })
+    this.updata()
     this.repayment()
   },
   // 点击切换状态
@@ -145,6 +153,7 @@ Page({
       indexId: e.detail.value
     })
     this.repayment()
+    this.updata()
   },
   // 页面加载获取银行
   getPageBack: async function () {

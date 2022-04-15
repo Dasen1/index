@@ -1,5 +1,5 @@
 import {request} from '../request/request'
-// 还款计划
+// 还款计划----------
 
 export function getRepaymentPlan(data) {
   // 还款计划列表
@@ -28,7 +28,7 @@ export function getRepaymentRecord(data) {
   },"isToken") 
 }
 
-// 贷款记录
+// 贷款记录------------
 export function getLoanRecordList(data) {
   // 贷款记录列表
   return request({
@@ -45,4 +45,15 @@ export function getLoanRecordInfo(id) {
     // data,
   },"isToken") 
 }
+
+// 还款记录--------------
+ export function getRepaymentRecordList(data) {
+  // 贷款记录列表
+  return request({
+    url: '/repayment/record/list/page',
+    method: 'get',
+    data,
+  },"isToken") 
+}
+
 

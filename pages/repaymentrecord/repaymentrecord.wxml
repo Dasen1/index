@@ -1,2 +1,58 @@
-<!--pages/repaymentrecord/repaymentrecord.wxml-->
-<text>还款记录</text>
+<!-- pages/repaymentrecord/repaymentrecord.wxml -->
+<view class="time_a">
+  <view wx:if="{{bjectArray.length}}" class="flex_d">
+    <view >
+    <picker bindchange="bindPickerChange" value="{{index}}" range-key="name" data-id='{{bjectArray[index].id}}' range="{{bjectArray}}">
+      <view class="">
+        <view class="deta_page">{{bjectArray[index].name}}</view>
+        <!-- <view class="deta_page"></view> -->
+      </view>
+    </picker>
+    </view>
+   <!-- 时间段 -->  
+    <view class="picker_group">  
+      <picker mode="date" value="{{date}}"  end="{{date2}}" bindchange="bindDateChange">  
+        <view >  
+          {{date}}至
+        </view>  
+      </picker>  
+      <picker mode="date" value="{{date2}}" start="{{date}}" end="2050-01-01" bindchange="bindDateChange2">  
+        <view >  
+          {{date2}}  
+        </view>  
+      </picker>        
+    </view>  
+  </view>
+  <view wx:if="{{dataList.length}}">
+    <view wx:for="{{dataList}}">
+      <view class="data_vwe" wx:key="{{index}}">
+        <view class="info_vh">
+          <text>贷款流水号：</text>
+          <text>{{item.flowId}}</text>
+        </view>
+        <view class="info_vh">
+          <text>贷款银行：</text>
+          <text>{{item.bankName}}</text>
+        </view>
+        <view class="info_vh">
+          <text>贷款信息：</text>
+          <text>￥{{item.loanAmount}}元</text>
+        </view>
+         <view class="info_vh">
+          <text>贷款时间：</text>
+          <text>{{item.loanTime}}</text>
+        </view>
+        <view class="info_vh">
+          <text>还款时间：</text>
+          <text>{{item.repaymentTime}}</text>
+        </view>
+        <view class="info_vh">
+          <text>还款金额：</text>
+          <text>{{item.repaymentAmount}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="nome" wx:if="{{nomore}}">没有更多了</view>
+  </view>
+  <view wx:else class="nomeset">暂无数据</view>
+</view>
