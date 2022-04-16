@@ -1,9 +1,6 @@
 /* pages/loansrecordDetail/loansrecordDetail.wxss */
 .page_wrap{
-  height: 100vh;
-  overflow: auto;
-  /* box-sizing: border-box; */
-  /* padding: 40rpx; */
+  min-height: 100vh;
   background-color: #EFEFEF;
 }
 .page_view{

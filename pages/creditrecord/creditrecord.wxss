@@ -1,9 +1,7 @@
 /* pages/loansrecord/loansrecord.wxss */
 
 .page_wrap{
-  height: 100vh;
-  overflow: auto;
-  /* box-sizing: border-box; */
+  min-height: 100vh;
   padding: 40rpx;
   background-color: #EFEFEF;
 }

@@ -1,11 +1,11 @@
 /* pages/addinfo/addinfo.wxss */
 /* pages/authentication/authentication.wxss */
 .wrap_bet{
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   padding: 32rpx 60rpx;
   background-color: #c1c2c7;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* display: flex;
   justify-content: center; */
 }

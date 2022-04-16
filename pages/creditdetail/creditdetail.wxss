@@ -1,7 +1,6 @@
 /* pages/creditdetail/creditdetail.wxss */
 .time_a {
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
   padding: 40rpx;
   font-size: 28rpx;
   background-color: #EFEFEF;

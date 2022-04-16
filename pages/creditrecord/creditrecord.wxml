@@ -19,6 +19,10 @@
       <view >账单授信时间</view>
       <view >{{item.createTime}}</view>
     </view>
+     <view class="page_flex">
+      <view >授信类型</view>
+      <view >{{item.pushSceneTypeDesc}}</view>
+    </view>
      <!-- <view class="page_right" data-id="{{item.id}}" bindtap="clickDetail">
        <view >明细</view>
     </view> -->

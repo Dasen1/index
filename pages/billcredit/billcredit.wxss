@@ -1,6 +1,6 @@
 /* pages/authentication/authentication.wxss */
 .wrap_bet{
-  height: 100vh;
+  min-height: 100vh;
   padding: 10px 30px;
   background-color: #c1c2c7;
   /* display: flex;

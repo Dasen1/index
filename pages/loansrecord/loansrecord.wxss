@@ -2,9 +2,6 @@
 
 .page_wrap{
   min-height: 100vh;
-  /* background-color: rgb(242, 242, 242); */
-  /* overflow: auto; */
-  /* box-sizing: border-box; */
   padding: 40rpx;
   background-color: #EFEFEF;
 }

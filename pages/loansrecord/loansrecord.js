@@ -7,7 +7,6 @@ Page({
    */
   data: {
     dataList: [],
-
     pageNum: 1,
     total: 0,
     nomore: false,
