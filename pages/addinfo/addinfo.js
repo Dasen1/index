@@ -1,5 +1,5 @@
 // pages/addinfo/addinfo.js
-import { getFuelGasCompanyList, postSmsSendCode, getCustomerGetPackInfoById, postFuelGasCompanyCheck } from '../../api/authentication'
+import { getFuelGasCompanyList, postSmsSendCode, postCompanyAddUpdate, getCustomerGetPackInfoById, postFuelGasCompanyCheck } from '../../api/authentication'
 Page({
 
   /**
@@ -18,7 +18,14 @@ Page({
       rouderList: [], // 燃气公司回显
       authPersonName: "",//被授权人姓名
       authPersonIdCardNumber: "", //被授权人身份证号
-      legalIsShow: 1 //是否是法人
+      legalIsShow: 1, //是否是法人
+
+      businessLicenseUrl: "", //营业执照
+      bossIdCardFrontUrl: "",      // 法人身份证头像面
+      bossIdCardReverseUrl: "",// 法人身份证国徽面
+      authPersonFileUrl: "",// 授权代办文件
+      authPersonIdCardFrontUrl: "",// 被授权人身份证头像面，
+      authPersonIdCardReverseUrl: "",// 国徽面
     }
     ,
     // 燃气公司列表
@@ -99,9 +106,67 @@ Page({
     this.data.fromPage.rouderList = e.detail.value
   },
   // 上传图片及附件
-  dataApd() {
-    console.log("123")
+  async dataApd(e) {
+    let listId = e.currentTarget.dataset.item
+    console.log(listId)
+    // return
+    const that = this
+    const token = wx.getStorageSync('token')
+    wx.chooseImage({
+      success(res) {
+        const tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: 'http://frloan.test.forhua.cc/api/upload/disk', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          header: {
+            Authorization: token
+          },
+          formData: {
+            uploadScene: "BANK_FILE"
+          },
+          success(res) {
+            let page_v = JSON.parse(res.data)
+            switch (listId) {
+              case 1:
+                console.log("走这里了么")
+                that.setData({
+                  ['fromPage.businessLicenseUrl']: page_v.result
+                })//营业执照
+                break;
+              case 2:
+                that.setData({
+                  ['fromPage.bossIdCardFrontUrl']: page_v.result
+                })//法人头像
+                break;
+              case 3:
+                that.setData({
+                  ['fromPage.bossIdCardReverseUrl']: page_v.result
+                })//法人国徽
+                break;
+              case 4:
+                that.setData({
+                  ['fromPage.authPersonFileUrl']: page_v.result
+                })//授权文件
+                break;
+              case 5:
+                that.setData({
+                  ['fromPage.authPersonIdCardFrontUrl']: page_v.result
+                })//授权人正
+                break;
+              case 6:
+                that.setData({
+                  ['fromPage.authPersonIdCardReverseUrl']: page_v.result
+                })//授权人反
+                break;
+
+            }
+          }
+        })
+      }
+    })
   },
+
 
   // 表单提交
   async formSubmit(e) {
@@ -109,7 +174,7 @@ Page({
     if (this.data.isShow == 2) {
       let list = e.detail.value
       let listNew = this.data.fromPage
-      if (listNew.legalIsShow==1) {
+      if (listNew.legalIsShow == 1) {
         if (!list.applyPhoneNumber) {
           return wx.showToast({
             title: "请输入手机号!",
@@ -124,8 +189,29 @@ Page({
             duration: 2000
           })
         }
+        if (!listNew.businessLicenseUrl) {
+          return wx.showToast({
+            title: "请上传营业执照!",
+            icon: "none",
+            duration: 2000
+          })
+        }
+        if (!listNew.bossIdCardFrontUrl) {
+          return wx.showToast({
+            title: "请上传法人身份证正面照!",
+            icon: "none",
+            duration: 2000
+          })
+        }
+        if (!listNew.bossIdCardReverseUrl) {
+          return wx.showToast({
+            title: "请上传法人身份证国徽面!",
+            icon: "none",
+            duration: 2000
+          })
+        }
       } else {
-        if (listNew.legalIsShow==2) {
+        if (listNew.legalIsShow == 2) {
           if (!list.applyPhoneNumber) {
             return wx.showToast({
               title: "请输入手机号!",
@@ -154,20 +240,65 @@ Page({
               duration: 2000
             })
           }
-
+          if (!listNew.businessLicenseUrl) {
+            return wx.showToast({
+              title: "请上传营业执照!",
+              icon: "none",
+              duration: 2000
+            })
+          }
+          if (!listNew.bossIdCardFrontUrl) {
+            return wx.showToast({
+              title: "请上传法人身份证正面照!",
+              icon: "none",
+              duration: 2000
+            })
+          }
+          if (!listNew.bossIdCardReverseUrl) {
+            return wx.showToast({
+              title: "请上传法人身份证国徽面!",
+              icon: "none",
+              duration: 2000
+            })
+          }
+          if (!listNew.authPersonFileUrl) {
+            return wx.showToast({
+              title: "请上传授权代办文件!",
+              icon: "none",
+              duration: 2000
+            })
+          }
+          if (!listNew.authPersonIdCardFrontUrl) {
+            return wx.showToast({
+              title: "请上传被授权人身份证正面照!",
+              icon: "none",
+              duration: 2000
+            })
+          }
+          if (!listNew.authPersonIdCardReverseUrl) {
+            return wx.showToast({
+              title: "请被授权人国徽面!",
+              icon: "none",
+              duration: 2000
+            })
+          }
         }
-
-
       }
 
       // 需要提交后端接口数据
-     let page = {
-       ...list,
-       fuelGasCompanyIdList:listNew.rouderList,
-       isBossApply:listNew.legalIsShow
+      let page = {
+        ...list,
+        fuelGasCompanyIdList: listNew.rouderList, // "燃气公司"
+        isBossApply: listNew.legalIsShow,  // "" // "是否法人"
+        businessLicenseUrl: listNew.businessLicenseUrl, //营业执照
+        bossIdCardFrontUrl: listNew.bossIdCardFrontUrl,      // 法人身份证头像面
+        bossIdCardReverseUrl: listNew.bossIdCardReverseUrl,// 法人身份证国徽面
+        authPersonFileUrl: listNew.authPersonFileUrl,// 授权代办文件
+        authPersonIdCardFrontUrl: listNew.authPersonIdCardFrontUrl,// 被授权人身份证头像面，
+        authPersonIdCardReverseUrl: listNew.authPersonIdCardReverseUrl,// 国徽面
 
-     }
-     console.log(page,"gagagag")
+      }
+      await postCompanyAddUpdate({ ...page })
 
     }
     // 第一页的提交
@@ -184,8 +315,6 @@ Page({
         })
       }
 
-      // let ids = await postFuelGasCompanyCheck({ fuelGasIdList: this.data.fromPage.rouderList, taxNumber: fromData.taxNumber })
-      //  if(ids) return
       this.setData({
         isShow: 2
       })

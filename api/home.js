@@ -8,3 +8,12 @@ export function getImageList(data) {
     data,
   },"isToken")
 }
+
+// 是否绑定过企业
+export function getCustomerCheckIsCompany() {
+  return request({
+    url: '/customer/checkIsCompany',
+    method: 'get',
+    // data,
+  },"isToken")
+}

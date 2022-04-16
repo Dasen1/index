@@ -115,7 +115,7 @@
 .font_text{
   font-size: 40rpx;
   font-weight: 600;
-  margin-left: 40rpx;
+  /* margin-left: 40rpx; */
 }
 .text_vw{
   font-size: 32rpx;

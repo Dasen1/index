@@ -7,7 +7,6 @@
             <view class="head_vpn">
                  <image class="img_vs" src="../../image/title.png" />
                <view>佛燃绿能贷</view>
-              
             </view>
         </view>
     </view>
@@ -24,7 +23,7 @@
             </swiper>
         </view>
         <view class="qr_page">
-            <view>完成认证最高可贷￥20万</view>
+            <view>完成认证最高可贷￥800000万</view>
             <view class="reuder">
                 <view class="delep">
                     <view>快速认证</view>
@@ -52,17 +51,21 @@
                             <img src="" alt="" />
                             <text class="fent_web">浙商银行</text>
                         </view>
-                        <view class="font">
-                            <text>可贷额度</text>
-                            <text class="font_text">$200000元</text>
+                        <!-- <view class="font">
+                            <text>可贷额度：</text>
+                            <text class="font_text">￥200000元</text>
+                        </view> -->
+                         <view class="font">
+                            <text>最高可贷额度：</text>
+                            <text class="font_text">￥800000元</text>
                         </view>
                     </view>
                     <view class="back_ve">
                         <view>
-                            <button bindtap="fastClick" size="mini" type="primary">快捷贷款</button>
+                            <button bindtap="fastLoan" size="mini" type="primary">快捷贷款</button>
                         </view>
                         <view>
-                            <button size="mini" class="detaile">快捷还款</button>
+                            <button bindtap="quickPayment" size="mini" class="detaile">快捷还款</button>
                         </view>
                     </view>
                 </view>

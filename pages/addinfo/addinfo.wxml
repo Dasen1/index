@@ -65,7 +65,7 @@
         <view class="flex">
           <view class="flex_wid">手机验证码</view>
           <input class="weui-input views" name="verifyCode" placeholder="请输入" />
-          <button  wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
+          <button wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
           <button wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
         </view>
         <view class="flex">
@@ -87,11 +87,37 @@
           <view class="flex_wid">被授权人身份证</view>
           <input class="weui-input" name="authPersonIdCardNumber" value="{{fromPage.authPersonIdCardNumber}}" placeholder="请输入" />
         </view>
-      </view>
-      <!-- <view bindtap="dataApd">上传附件</view>
-      <view>营业执照</view>
+        <view class="page_fled">上传附件:</view>
+        <view class="flex_vpn">
+          <view class="head_wid" bindtap="dataApd" data-item="{{1}}" >
+            <image src="{{fromPage.businessLicenseUrl?fromPage.businessLicenseUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>营业执照</view>
+          </view>
+          <view class="head_wid" bindtap="dataApd" data-item="{{2}}">
+            <image src="{{fromPage.bossIdCardFrontUrl?fromPage.bossIdCardFrontUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>法人身份证正面照</view>
+          </view>
+          <view class="head_wid" bindtap="dataApd" data-item="{{3}}">
+            <image src="{{fromPage.bossIdCardReverseUrl?fromPage.bossIdCardReverseUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>国徽面</view>
+          </view>
+          <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{4}}">
+            <image src="{{fromPage.authPersonFileUrl?fromPage.bossIdCardReverseUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>授权代办文件</view>
+          </view>
+          <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{5}}">
+            <image src="{{fromPage.authPersonIdCardFrontUrl?fromPage.authPersonIdCardFrontUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>被授权人身份证正面照</view>
+          </view>
+          <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{6}}">
+            <image src="{{fromPage.authPersonIdCardReverseUrl?fromPage.authPersonIdCardReverseUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <view>国徽面</view>
+          </view>
+        </view>
+        <!-- <view>营业执照</view>
       <view>法人身份证头像面</view>
       <view>国徽面</view> -->
+      </view>
       <view class="dev_btn" hidden="{{isShow == 2}}">
         <button type="primary" size="mini" formType="submit">下一步</button>
       </view>

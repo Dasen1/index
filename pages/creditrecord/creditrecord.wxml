@@ -1,6 +1,5 @@
 <!--pages/loansrecord/loansrecord.wxml-->
 <view class="page_wrap">
- 
  <view wx:if="{{dataList.length}}">
  <view class="page_view" wx:for="{{dataList}}" wx:key="{{index}}">
     <view class="page_flex">

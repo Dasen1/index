@@ -34,3 +34,12 @@ export function postSmsSendCode(data) {
     data,
   },"isToken") 
 }
+
+export function postCompanyAddUpdate(data) {
+  //企业认证（新增与编辑）上传
+  return request({
+    url: `/company/addUpdate`,
+    method: 'post',
+    data,
+  },"isToken") 
+}

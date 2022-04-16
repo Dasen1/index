@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-import { getImageList, } from "../../api/home"
+import { getImageList,getCustomerCheckIsCompany } from "../../api/home"
 const app = getApp()
 
 Page({
@@ -96,11 +96,12 @@ Page({
   },
 
 
-  // 点击贷款进度
-  fastClick() {
-    // wx.navigateTo({
-    //   url:"/pages/billcredit/billcredit"
-    // })
+  // 认证流程
+ async fastClick() {
+    //1.先验证是否绑定企业 -无绑定企业弹窗走企业认证-回首页
+
+    // let isShow = await getCustomerCheckIsCompany()
+    // console.log(isShow,"啥玩意")
     if (true) {
       wx.showModal({
         // title: '认证',
@@ -118,6 +119,20 @@ Page({
         }
       })
     }
+    // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
+
+    // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
+
+    // 4.携带需要数据跳转银行小程序
+
+  },
+  //  快捷贷款
+   fastLoan:function(){
+     this.fastClick()
+   },
+  // 快捷还款按钮
+  quickPayment:function(){
+    this.fastClick()
   },
 
 

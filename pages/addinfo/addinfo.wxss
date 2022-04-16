@@ -107,3 +107,24 @@
 .pde{
    margin-top: 20rpx;
 }
+.image_vip{
+  width: 150rpx;
+  height: 150rpx;
+   background-size: contain;
+   background-repeat: no-repeat;
+  border: 1px solid #aaa;
+}
+.head_wid{
+  width: 150rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+.flex_vpn{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 28rpx;
+}
+.page_fled{
+  margin-bottom: 20rpx;
+}
