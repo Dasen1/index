@@ -92,7 +92,7 @@ Page({
       console.log(e)
     }
   },
-  // 点击详情跳转
+  // // 点击详情跳转
   clickDetail(e) {
     wx.navigateTo({
       url: "/pages/loansrecordDetail/loansrecordDetail?id=" + e.currentTarget.dataset.id

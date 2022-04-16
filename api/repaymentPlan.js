@@ -55,5 +55,15 @@ export function getLoanRecordInfo(id) {
     data,
   },"isToken") 
 }
+// 推送详情--------------
+
+export function getPushRecordList(data) {
+  // 贷款记录列表
+  return request({
+    url: '/push/record/list/page',
+    method: 'get',
+    data,
+  },"isToken") 
+}
 
 

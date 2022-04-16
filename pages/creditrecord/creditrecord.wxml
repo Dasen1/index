@@ -1,2 +1,29 @@
-<!--pages/creditrecord/creditrecord.wxml-->
-<text>授信记录</text>
+<!--pages/loansrecord/loansrecord.wxml-->
+<view class="page_wrap">
+ 
+ <view wx:if="{{dataList.length}}">
+ <view class="page_view" wx:for="{{dataList}}" wx:key="{{index}}">
+    <view class="page_flex">
+      <view >授信对象</view>
+      <view >{{item.bankName}}</view>
+    </view>
+     <view class="page_flex">
+      <view >授信状态</view>
+      <view >{{item.pushStatusDesc}}</view>
+    </view>
+     <view class="page_flex">
+      <view >授信周期</view>
+      <view >{{item.pushTimeCycle}}</view>
+    </view>
+     <view class="page_flex">
+      <view >账单授信时间</view>
+      <view >{{item.createTime}}</view>
+    </view>
+     <!-- <view class="page_right" data-id="{{item.id}}" bindtap="clickDetail">
+       <view >明细</view>
+    </view> -->
+   </view>
+   <view class="nome" wx:if="{{nomore}}">没有更多了</view>
+ </view>
+  <view wx:else class="nomeset">暂无数据</view>
+</view>
