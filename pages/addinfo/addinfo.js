@@ -1,7 +1,8 @@
 // pages/addinfo/addinfo.js
-import { getFuelGasCompanyList, postSmsSendCode, postCompanyAddUpdate, getCustomerGetPackInfoById, postFuelGasCompanyCheck } from '../../api/authentication'
+import { getFuelGasCompanyList, postSmsSendCode, postCompanyAddUpdate, postFuelGasCompanyCheck } from '../../api/authentication'
+import { getCompanyInfo } from '../../api/home'
+import { postByToken } from "../../api/order"
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,13 +13,13 @@ Page({
       taxNumber: "", //纳税人识别号
       companyBossName: "",//法人姓名
       bossIdCardNumber: "", //法人身份证号
-      registerType: "", //法人手机号
+      bossPhoneNumber: "", //法人手机号
       applyPhoneNumber: "",// 申请人手机号
       verifyCode: "",//手机验证码
-      rouderList: [], // 燃气公司回显
+      rouderList: [], // 燃气公司传递
       authPersonName: "",//被授权人姓名
       authPersonIdCardNumber: "", //被授权人身份证号
-      legalIsShow: 1, //是否是法人
+      isBossApply: 1, //是否是法人
 
       businessLicenseUrl: "", //营业执照
       bossIdCardFrontUrl: "",      // 法人身份证头像面
@@ -29,12 +30,12 @@ Page({
     }
     ,
     // 燃气公司列表
-    itemsDeta: [],
+    itemsDeta: [], //回显
     index: 0,
     isShow: 1, //模块页码
     items: [
       { value: '1', name: '是法人本人申请', checked: "true" },
-      { value: '2', name: '否，是法人授权给本人申请' },
+      { value: '0', name: '否，是法人授权给本人申请' },
     ],
     // 是否法人申请显示状态
     pageIsShow: false,
@@ -49,6 +50,7 @@ Page({
    */
   onLoad: function (options) {
     this.getFuelGas()
+    this.dataPageDetail()
   },
 
   /**
@@ -98,6 +100,74 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  // 页面加载获取已绑定数据
+  dataPageDetail: async function () {
+    let data = wx.getStorageSync("info")
+    if (data.companyId) {
+      let pageDetail = await getCompanyInfo(data.companyId)
+      console.log(pageDetail, "哇")
+      //  获取回显字段
+      this.setData({
+        ['fromPage.companyAccountName']: pageDetail.companyAccountName, //账号名称
+        ['fromPage.companyName']: pageDetail.companyName,  //公司名称
+        ['fromPage.taxNumber']: pageDetail.taxNumber,   // 纳税人识别号
+        ['fromPage.companyBossName']: pageDetail.companyBossName,  // 法人姓名
+        ['fromPage.bossIdCardNumber']: pageDetail.bossIdCardNumber, // 法人身份证
+        ['fromPage.bossPhoneNumber']: pageDetail.bossPhoneNumber, //法人手机号
+
+        ['fromPage.applyPhoneNumber']: pageDetail.applyPhoneNumber,  // 申请人手机号
+        ['fromPage.authPersonName']: pageDetail.authPersonName,  // 被授权人姓名
+        ['fromPage.authPersonIdCardNumber']: pageDetail.authPersonIdCardNumber,  // 被授权人身份证
+
+        ['fromPage.businessLicenseUrl']: pageDetail.businessLicenseUrl,  // 营业执照
+        ['fromPage.bossIdCardFrontUrl']: pageDetail.bossIdCardFrontUrl,  // 法人证 正面
+        ['fromPage.bossIdCardReverseUrl']: pageDetail.bossIdCardReverseUrl,  // 法人国徽
+        ['fromPage.authPersonFileUrl']: pageDetail.authPersonFileUrl,  // 授权代办文件
+        ['fromPage.authPersonIdCardFrontUrl']: pageDetail.authPersonIdCardFrontUrl,  // 被授权证 正面
+        ['fromPage.authPersonIdCardReverseUrl']: pageDetail.authPersonIdCardReverseUrl,  // 本授权人 国徽
+        ['fromPage.isBossApply']: pageDetail.isBossApply //是否法人申请
+      })
+
+      //  获取燃气公司回显字段
+      let list = this.data.itemsDeta
+      let listPush = []
+      let pageflex = list.map((item) => {
+        pageDetail.fuelGasCompanyList.map((items) => {
+          if (item.id == items.id) {
+            item.checked = true
+            listPush.push(items.id)
+          }
+        })
+        return item
+      })
+      this.data.fromPage.rouderList = listPush
+      // rouderList
+      this.setData({
+        itemsDeta: pageflex
+      })
+      //  是否法人申请
+      if (pageDetail.isBossApply) {
+        const items = this.data.items
+        for (let i = 0, len = items.length; i < len; ++i) {
+          items[i].checked = items[i].value == pageDetail.isBossApply
+        }
+        this.setData({
+          items,
+          pageIsShow: false
+        })
+      } else {
+        const items = this.data.items
+        for (let i = 0, len = items.length; i < len; ++i) {
+          items[i].checked = items[i].value == pageDetail.isBossApply
+        }
+        this.setData({
+          items,
+          pageIsShow: true
+        })
+      }
+    }
   },
 
   // 燃气公司选择
@@ -174,7 +244,7 @@ Page({
     if (this.data.isShow == 2) {
       let list = e.detail.value
       let listNew = this.data.fromPage
-      if (listNew.legalIsShow == 1) {
+      if (listNew.isBossApply == 1) {
         if (!list.applyPhoneNumber) {
           return wx.showToast({
             title: "请输入手机号!",
@@ -211,7 +281,7 @@ Page({
           })
         }
       } else {
-        if (listNew.legalIsShow == 2) {
+        if (listNew.isBossApply == 0) {
           if (!list.applyPhoneNumber) {
             return wx.showToast({
               title: "请输入手机号!",
@@ -284,28 +354,54 @@ Page({
           }
         }
       }
-
+      let data = wx.getStorageSync("info")
       // 需要提交后端接口数据
       let page = {
         ...list,
         fuelGasCompanyIdList: listNew.rouderList, // "燃气公司"
-        isBossApply: listNew.legalIsShow,  // "" // "是否法人"
+        isBossApply: listNew.isBossApply,  // "" // "是否法人"
         businessLicenseUrl: listNew.businessLicenseUrl, //营业执照
         bossIdCardFrontUrl: listNew.bossIdCardFrontUrl,      // 法人身份证头像面
         bossIdCardReverseUrl: listNew.bossIdCardReverseUrl,// 法人身份证国徽面
         authPersonFileUrl: listNew.authPersonFileUrl,// 授权代办文件
         authPersonIdCardFrontUrl: listNew.authPersonIdCardFrontUrl,// 被授权人身份证头像面，
         authPersonIdCardReverseUrl: listNew.authPersonIdCardReverseUrl,// 国徽面
-
+        id: data.companyId ? data.companyId : ""
       }
-      await postCompanyAddUpdate({ ...page })
+      try {
+        await postCompanyAddUpdate({ ...page })
+        const dataInfo = await postByToken()
+        wx.setStorageSync('info', dataInfo)  //存储用户信息
+        wx.showModal({
+          // title: '认证',
+          // cancelText: "取消",
+          confirmText: "回首页",
+          content: '企业认证信息上传成功',
+          success(res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: "/pages/index/index"
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      } catch (e) {
+        wx.showToast({
+          title: e,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+
 
     }
     // 第一页的提交
     if (this.data.isShow == 1) {
       let fromData = e.detail.value
       if (fromData.companyAccountName && fromData.companyName && fromData.taxNumber
-        && this.data.fromPage.rouderList.length && fromData.companyBossName && fromData.bossIdCardNumber && fromData.registerType
+        && this.data.fromPage.rouderList.length && fromData.companyBossName && fromData.bossIdCardNumber && fromData.bossPhoneNumber
       ) {
       } else {
         return wx.showToast({
@@ -314,10 +410,23 @@ Page({
           duration: 2000
         })
       }
+      //  校验燃气公司跟企业税号是否匹配
+      try {
+        let dataset = await postFuelGasCompanyCheck({ fuelGasIdList: this.data.fromPage.rouderList, taxNumber: fromData.taxNumber })
+        if (dataset) {
+          this.setData({
+            isShow: 2
+          })
+        }
+      } catch (e) {
+        return wx.showToast({
+          title: e,
+          icon: "none",
+          duration: 2000
+        })
+      }
 
-      this.setData({
-        isShow: 2
-      })
+
     }
   },
   // 表单重置
@@ -336,12 +445,12 @@ Page({
   radioChange(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
     if (e.detail.value == 1) {
-      this.data.fromPage.legalIsShow = 1
+      this.data.fromPage.isBossApply = 1
       this.setData({
         pageIsShow: false
       })
     } else {
-      this.data.fromPage.legalIsShow = 2
+      this.data.fromPage.isBossApply = 0
       this.setData({
         pageIsShow: true
       })
@@ -358,7 +467,6 @@ Page({
   // 页面加载获取燃气公司列表
   getFuelGas: async function () {
     let company = await getFuelGasCompanyList()
-    //  company[0].checked=true
     this.setData({
       itemsDeta: company
     })

@@ -9,6 +9,7 @@ export const request = (params, isToken) => {
     const token = wx.getStorageSync('token')
     if (token) {
       header['Authorization'] = token
+      header['Client-Type'] = "MINI_PROGRAM"
     }
   }
   ajaxTimes++

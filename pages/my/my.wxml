@@ -49,50 +49,81 @@
   <!-- 认证信息弹窗 -->
   <view class="moudel" wx:if="{{isShowData}}">
     <view class="moudel_wrap">
-      <view class="rz_x">认证信息</view>
-      <view class="moudel_pay">
-        <view class="moudel_text">账号名称</view>
-        <view>ABCD1234</view>
+         <form catchsubmit="formSubmit" catchreset="formReset">
+      <view class="rz_x">认证信息修改</view>
+       <view class="flex">
+        <view class="flex_wid">登录手机号</view>
+        <input bindinput="sendInput" type="number" maxlength="11" class="weui-input" name="applyPhoneNumber" value="{{fromPage.applyPhoneNumber}}" placeholder="请输入" />
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">公司名称</view>
-        <view>广东绿能贷科技有限公司</view>
+       <view class="flex">
+        <view class="flex_wid">手机验证码</view>
+        <input class="weui-input views" name="verifyCode" placeholder="请输入" />
+        <button wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
+        <button wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">纳税人识别号</view>
-        <view>KX123456789ABCD</view>
+      <view class="flex">
+        <view class="flex_wid">申请人手机号</view>
+        <input bindinput="sendInput" type="number" maxlength="11" class="weui-input" name="applyPhoneNumber" value="{{fromPage.applyPhoneNumber}}" placeholder="请输入" />
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">法人姓名</view>
-        <view>abcde1224</view>
+      <view class="flex">
+        <view class="flex_wid">手机验证码</view>
+        <input class="weui-input views" name="verifyCode" placeholder="请输入" />
+        <button wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
+        <button wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">法人身份证号</view>
-        <view>12345619******4321</view>
+      <view class="flex">
+        <view class="flex_wid">法人本人申请</view>
+        <radio-group bindchange="radioChange">
+          <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+              <radio value="{{item.value}}" checked="{{item.checked}}" />
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </radio-group>
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">手机号</view>
-        <view>137****0037</view>
+      <view wx:if="{{pageIsShow}}" class="flex">
+        <view class="flex_wid">被授权人姓名</view>
+        <input class="weui-input" name="authPersonName" value="{{fromPage.authPersonName}}" placeholder="请输入" />
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">燃气公司</view>
-        <view>佛燃能源集团股份有限公司</view>
+      <view wx:if="{{pageIsShow}}" class="flex">
+        <view class="flex_wid">被授权人身份证</view>
+        <input class="weui-input" name="authPersonIdCardNumber" value="{{fromPage.authPersonIdCardNumber}}" placeholder="请输入" />
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">被授权人姓名</view>
-        <view>abcde1224</view>
+      <view class="page_fled">上传附件:</view>
+      <view class="flex_vpn">
+        <!-- <view class="head_wid" bindtap="dataApd" data-item="{{1}}">
+          <image src="{{fromPage.businessLicenseUrl?fromPage.businessLicenseUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>营业执照</view>
+        </view>
+        <view class="head_wid" bindtap="dataApd" data-item="{{2}}">
+          <image src="{{fromPage.bossIdCardFrontUrl?fromPage.bossIdCardFrontUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>法人身份证正面照</view>
+        </view>
+        <view class="head_wid" bindtap="dataApd" data-item="{{3}}">
+          <image src="{{fromPage.bossIdCardReverseUrl?fromPage.bossIdCardReverseUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>国徽面</view>
+        </view> -->
+        <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{4}}">
+          <image src="{{fromPage.authPersonFileUrl?fromPage.authPersonFileUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>授权代办文件</view>
+          <view>下载文件</view>
+        </view>
+        <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{5}}">
+          <image src="{{fromPage.authPersonIdCardFrontUrl?fromPage.authPersonIdCardFrontUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>被授权人身份证正面照</view>
+        </view>
+        <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{6}}">
+          <image src="{{fromPage.authPersonIdCardReverseUrl?fromPage.authPersonIdCardReverseUrl:'../../image/image_mo.png'}}" class="image_vip"></image>
+          <view>国徽面</view>
+        </view>
       </view>
-       <view class="moudel_pay">
-        <view class="moudel_text">被授权人身份证号</view>
-        <view>12345619******1234</view>
-      </view>
-
-    <view class="size_flex">
+      <view class="size_flex">
         <button class="btn_color" size="mini" bindtap="onayClick">好的</button>
-       <button class="btn_color" size="mini">修改注册信息</button>
-    </view>
-    
+        <button class="btn_color" size="mini" formType="submit">修改注册信息</button>
+      </view>
+      </form>
     </view>
   </view>
-    <loginpop bind:callSomeFun="onLoad" wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
+  <loginpop bind:callSomeFun="onLoad" wx:if="{{isShow}}" step id="dialogAlert"></loginpop>
 </view>

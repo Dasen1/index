@@ -41,7 +41,7 @@
         </view>
         <view class="flex">
           <view class="flex_wid">法人手机号</view>
-          <input class="weui-input" type="number" maxlength="11" value="{{fromPage.registerType}}" name="registerType" placeholder="请输入" />
+          <input class="weui-input" type="number" maxlength="11" value="{{fromPage.bossPhoneNumber}}" name="bossPhoneNumber" placeholder="请输入" />
         </view>
         <view class="flex">
           <view class="flex_wid">燃气公司</view>
@@ -102,8 +102,9 @@
             <view>国徽面</view>
           </view>
           <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{4}}">
-            <image src="{{fromPage.authPersonFileUrl?fromPage.bossIdCardReverseUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
+            <image src="{{fromPage.authPersonFileUrl?fromPage.authPersonFileUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
             <view>授权代办文件</view>
+             <view>下载文件</view>
           </view>
           <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{5}}">
             <image src="{{fromPage.authPersonIdCardFrontUrl?fromPage.authPersonIdCardFrontUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
@@ -114,9 +115,6 @@
             <view>国徽面</view>
           </view>
         </view>
-        <!-- <view>营业执照</view>
-      <view>法人身份证头像面</view>
-      <view>国徽面</view> -->
       </view>
       <view class="dev_btn" hidden="{{isShow == 2}}">
         <button type="primary" size="mini" formType="submit">下一步</button>

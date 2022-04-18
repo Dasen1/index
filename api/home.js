@@ -17,3 +17,32 @@ export function getCustomerCheckIsCompany() {
     // data,
   },"isToken")
 }
+
+// 获取企业认证公司详情、
+export function getCompanyInfo(id) {
+  return request({
+    url: `/company/info/${id}`,
+    method: 'get',
+    // data,
+  },"isToken")
+}
+
+// 查看银行授信状态
+export function getCompanyGrantCreditStatus(data) {
+  return request({
+    url: `/bank/company/grantCreditStatus`,
+    method: 'post',
+    data,
+  },"isToken")
+}
+
+// 分页获取银行列表
+
+export function getBankListpage(data) {
+  return request({
+    url: `/bank/list/page`,
+    method: 'get',
+    data,
+  },"isToken")
+}
+

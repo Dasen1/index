@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-import { getImageList,getCustomerCheckIsCompany } from "../../api/home"
+import { getImageList,getBankListpage, getCustomerCheckIsCompany,getCompanyGrantCreditStatus } from "../../api/home"
 const app = getApp()
 
 Page({
@@ -18,7 +18,10 @@ Page({
       navTop: "",
       navObj: "",
       navObjWid: ""
-    }  //获取导航的信息
+    } , //获取导航的信息
+
+    // 银行信息
+    backList:[]
   },
   // 事件处理函数
   bindViewTap() {
@@ -35,21 +38,21 @@ Page({
     // 获取顶部胶囊详细信息
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
-       success: res => {
-         //导航高度
-         let statusBarHeight = res.statusBarHeight,
-           navTop = menuButtonObject.top,
-           navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-           navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-         this.data.globalData.navHeight = navHeight; //导航栏总体高度
-         this.data.globalData.navTop = navTop; //胶囊距离顶部距离
-         this.data.globalData.navObj = menuButtonObject.height; //胶囊高度
-         this.data.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-       },
-       fail(err) {
-         console.log(err);
-       }
-     })
+      success: res => {
+        //导航高度
+        let statusBarHeight = res.statusBarHeight,
+          navTop = menuButtonObject.top,
+          navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+          navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
+        this.data.globalData.navHeight = navHeight; //导航栏总体高度
+        this.data.globalData.navTop = navTop; //胶囊距离顶部距离
+        this.data.globalData.navObj = menuButtonObject.height; //胶囊高度
+        this.data.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
 
     // 页面加载验证是否登录
     const token = wx.getStorageSync('token')
@@ -60,10 +63,21 @@ Page({
       return
     }
     // 页面加载请求轮播
-     this.getImagePage()
-    
-   
+    this.getImagePage()
+    // 银行信息
+    this.BankListpage()
+
   },
+  // 页面加载请求银行数据
+  async BankListpage(){
+    let backList = await getBankListpage()
+    this.setData({
+      backList:backList.list
+    })
+    console.log(this.data.backList,"gagaga")
+    console.log(backList,"这是什么东西")
+   },
+
   onLoad(opt) {
     // 页面刷新时请求
     this.setData({
@@ -77,49 +91,59 @@ Page({
       return
     }
     // 页面加载请求轮播
-     this.getImagePage()
+    this.getImagePage()
 
   },
   // 点击图片跳转链接
   onSwiperTap(e) {
     wx.navigateTo({
-      url: "/pages/out/out?skiplinkurl="+ e.target.dataset.skiplinkurl
+      url: "/pages/out/out?skiplinkurl=" + e.target.dataset.skiplinkurl
     })
   },
 
   // 页面加载获取轮播图
   async getImagePage() {
-    let {list} = await getImageList()
+    let { list } = await getImageList()
     this.setData({
-      background_img:list
-     })
+      background_img: list
+    })
   },
 
+  // 跳转认证弹窗
+  certification() {
+    wx.showModal({
+      // title: '认证',
+      cancelText: "取消",
+      confirmText: "开始认证",
+      content: '您的企业还未认证，无贷款记录',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: "/pages/authentication/authentication"
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
 
   // 认证流程
- async fastClick() {
+  async fastClick() { 
     //1.先验证是否绑定企业 -无绑定企业弹窗走企业认证-回首页
-
-    // let isShow = await getCustomerCheckIsCompany()
-    // console.log(isShow,"啥玩意")
-    if (true) {
-      wx.showModal({
-        // title: '认证',
-        cancelText: "取消",
-        confirmText: "开始认证",
-        content: '您的企业还未认证，无贷款记录',
-        success(res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: "/pages/authentication/authentication"
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
     }
-    // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
+   
+   // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
+    let setInfo = this.getStorageSync("info")
+    console.log(setInfo,"啥啊")
+    // let bankIsShow = await getCompanyGrantCreditStatus({bankNo})
+    console.log(bankIsShow,"什么嘎嘎嘎")
+
+   
 
     // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
 
@@ -127,47 +151,77 @@ Page({
 
   },
   //  快捷贷款
-   fastLoan:function(){
-     this.fastClick()
-   },
+  fastLoan: function () {
+    this.fastClick()
+  },
   // 快捷还款按钮
-  quickPayment:function(){
+  quickPayment: function () {
     this.fastClick()
   },
 
 
   // 贷款进度
-  loansQuery() {
+  async loansQuery() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/lendingpace/lendingpace"
     })
   },
   // 贷款记录
-  loansRecord() {
+  async loansRecord() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/loansrecord/loansrecord"
     })
   },
   // 贷款协议
-  loansProtocol() {
+  async loansProtocol() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/loanagreement/loanagreement"
     })
   },
   // 授信记录
-  creditRecord() {
+  async creditRecord() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/creditrecord/creditrecord"
     })
   },
   // 还款计划
-  repayment() {
+  async repayment() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/repayment/repayment"
     })
   },
   // 还款记录
-  repaymentQuery() {
+  async repaymentQuery() {
+    let isShow = await getCustomerCheckIsCompany()
+    if (!isShow) {
+      this.certification()
+      return false
+    }
     wx.navigateTo({
       url: "/pages/repaymentrecord/repaymentrecord"
     })

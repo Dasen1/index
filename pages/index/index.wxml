@@ -5,13 +5,13 @@
         <view class="flex-row j_b" style="height:{{globalData.navObj}}px;padding-top:{{globalData.navTop}}px;padding-right:{{globalData.navObjWid+5}}px;">
             <view class="head_store text_ellipsis"></view>
             <view class="head_vpn">
-                 <image class="img_vs" src="../../image/title.png" />
-               <view>佛燃绿能贷</view>
+                <image class="img_vs" src="../../image/title.png" />
+                <view>佛燃绿能贷</view>
             </view>
         </view>
     </view>
     <view class="bg_wrap" bindtap="">
-            <!-- 轮播图 -->
+        <!-- 轮播图 -->
         <view class="page-section page-section-spacing swiper">
             <swiper catchtap="onSwiperTap" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
                 <block wx:for="{{background_img}}" wx:key="*this">
@@ -45,17 +45,17 @@
         <view>
             <view class="text_vw">可贷银行</view>
             <view class="de_kiel">
-                <view class="bank">
+                <view class="bank" wx:for="{{backList}}" wx:key="*this">
                     <view class="bank_flex">
                         <view>
                             <img src="" alt="" />
-                            <text class="fent_web">浙商银行</text>
+                            <text class="fent_web">{{item.bankName}}</text>
                         </view>
                         <!-- <view class="font">
                             <text>可贷额度：</text>
                             <text class="font_text">￥200000元</text>
                         </view> -->
-                         <view class="font">
+                        <view class="font">
                             <text>最高可贷额度：</text>
                             <text class="font_text">￥800000元</text>
                         </view>
