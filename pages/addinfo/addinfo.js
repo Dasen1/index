@@ -373,8 +373,7 @@ Page({
         const dataInfo = await postByToken()
         wx.setStorageSync('info', dataInfo)  //存储用户信息
         wx.showModal({
-          // title: '认证',
-          // cancelText: "取消",
+          showCancel:false,
           confirmText: "回首页",
           content: '企业认证信息上传成功',
           success(res) {

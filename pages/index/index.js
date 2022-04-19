@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-import { getImageList,getBankListpage, getCustomerCheckIsCompany,getCompanyGrantCreditStatus } from "../../api/home"
+import { getImageList, getBankListpage, getCustomerCheckIsCompany, getCompanyGrantCreditStatus } from "../../api/home"
 const app = getApp()
 
 Page({
@@ -18,10 +18,10 @@ Page({
       navTop: "",
       navObj: "",
       navObjWid: ""
-    } , //获取导航的信息
+    }, //获取导航的信息
 
     // 银行信息
-    backList:[]
+    backList: []
   },
   // 事件处理函数
   bindViewTap() {
@@ -69,14 +69,14 @@ Page({
 
   },
   // 页面加载请求银行数据
-  async BankListpage(){
+  async BankListpage() {
     let backList = await getBankListpage()
     this.setData({
-      backList:backList.list
+      backList: backList.list
     })
-    console.log(this.data.backList,"gagaga")
-    console.log(backList,"这是什么东西")
-   },
+    console.log(this.data.backList, "gagaga")
+    console.log(backList, "这是什么东西")
+  },
 
   onLoad(opt) {
     // 页面刷新时请求
@@ -129,30 +129,43 @@ Page({
   },
 
   // 认证流程
-  async fastClick() { 
+  fastClick: async function (bankcode) {
+    console.log(bankcode, "啥啊")
     //1.先验证是否绑定企业 -无绑定企业弹窗走企业认证-回首页
     let isShow = await getCustomerCheckIsCompany()
     if (!isShow) {
       this.certification()
       return false
     }
-   
-   // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
-    let setInfo = this.getStorageSync("info")
-    console.log(setInfo,"啥啊")
-    // let bankIsShow = await getCompanyGrantCreditStatus({bankNo})
-    console.log(bankIsShow,"什么嘎嘎嘎")
 
-   
+    // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
+    let setInfo = wx.getStorageSync("info")
+    // let bankIsShow = await getCompanyGrantCreditStatus({ bankNo: bankcode, companyId: setInfo.companyId })
+
 
     // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
-
+    wx.showModal({
+      // title: '认证',
+      cancelText: "取消",
+      confirmText: "开始认证",
+      content: '您的企业还未进行银行认证',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: "/pages/personaldata/personaldata"
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
     // 4.携带需要数据跳转银行小程序
 
   },
   //  快捷贷款
-  fastLoan: function () {
-    this.fastClick()
+  fastLoan: function (e) {
+    let bankcode = e.currentTarget.dataset.bankcode
+    this.fastClick(bankcode)
   },
   // 快捷还款按钮
   quickPayment: function () {

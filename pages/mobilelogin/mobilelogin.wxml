@@ -6,7 +6,9 @@
   </view>
    <view class="phoneCode">
  <input type="text" placeholder="请输入验证码" bindinput="getPhoneCode" ></input>
- <button type="primary" size="mini" bindtap="sendPhoneCode">发送验证码</button>
+ <!-- <button type="primary" size="mini" bindtap="sendPhoneCode">发送验证码</button> -->
+  <button wx:if="{{send}}" type="primary" class="but_pd" bindtap="sendCode" size="mini">发送验证码</button>
+  <button wx:if="{{alreadySend}}" type="primary" class="but_pd" size="mini">{{second+"s"}}</button>
  </view>
 
    <view class="data-v"> 

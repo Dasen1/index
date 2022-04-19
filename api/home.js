@@ -37,7 +37,6 @@ export function getCompanyGrantCreditStatus(data) {
 }
 
 // 分页获取银行列表
-
 export function getBankListpage(data) {
   return request({
     url: `/bank/list/page`,

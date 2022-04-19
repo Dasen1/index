@@ -1,33 +1,33 @@
 /* pages/mobilelogin/mobilelogin.wxss */
 
 .wrap {
-  padding: 40px;
+  padding: 80rpx;
 }
 .login_mb {
-  font-size: 20px;
+  font-size: 40rpx;
   color: #000;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 50rpx;
 }
 .weui-input {
   /* font-size: 18px; */
-  width: 260px;
-  height: 40px;
-  border-radius: 4px;
-  border: 1px solid #c3c3c3;
-  margin-bottom: 20px;
-  padding-left: 10px;
+  width: 520rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #c3c3c3;
+  margin-bottom: 40rpx;
+  padding-left: 20rpx;
 }
 .btn {
   width: 100% !important;
-  height: 40px;
+  height: 80rpx;
   background-color: #07c160;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  border-radius: 4px;
-  margin-top: 40px;
+  border-radius: 8rpx;
+  margin-top: 80rpx;
 }
 .phoneCode {
   display: flex;
@@ -36,18 +36,18 @@
 .phoneCode input {
   width: 60%;
   /* margin: 20px; */
-  border: 1px solid #c3c3c3;
-  padding-left: 10px;
-  height: 40px;
-  border-radius: 4px;
+  border: 2rpx solid #c3c3c3;
+  padding-left: 20rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
 }
 .phoneCode button {
-  height: 40px;
+  height: 80rpx;
   vertical-align: middle;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .data-v{
-  margin-top: 20px;
+  margin-top: 40rpx;
 }

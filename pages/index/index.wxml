@@ -55,14 +55,14 @@
                             <text>可贷额度：</text>
                             <text class="font_text">￥200000元</text>
                         </view> -->
-                        <view class="font">
+                         <view class="font">
                             <text>最高可贷额度：</text>
                             <text class="font_text">￥800000元</text>
                         </view>
                     </view>
                     <view class="back_ve">
                         <view>
-                            <button bindtap="fastLoan" size="mini" type="primary">快捷贷款</button>
+                            <button data-bankCode="{{item.bankCode}}" bindtap="fastLoan" size="mini" type="primary">快捷贷款</button>
                         </view>
                         <view>
                             <button bindtap="quickPayment" size="mini" class="detaile">快捷还款</button>

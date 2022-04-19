@@ -9,7 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow: false
+    isShow: false,
+
+    send: true,  //倒计时跟发送
+    alreadySend: false,
+    second: 60,
 
   },
   getPhoneNumber(e) {
@@ -21,8 +25,49 @@ Page({
     phoneCode = e.detail.value
 
   },
+
+   // 发送短信验证码
+  //  sendCode: async function () {
+  //   if (!this.data.fromPage.applyPhoneNumber) {
+  //     return wx.showToast({
+  //       title: "请输入手机号码!",
+  //       icon: "none",
+  //       duration: 2000
+  //     })
+  //   }
+  //   await postSmsSendCode({ sendScene: "ENTERPRISE_AUTH", phoneNumber: this.data.fromPage.applyPhoneNumber })
+
+  //   this.setData({
+  //     alreadySend: true,
+  //     send: false
+  //   })
+  //   this.timer()
+  // },
+  // 倒计时功能
+  timer: function () {
+    let promise = new Promise((resolve, reject) => {
+      let setTimer = setInterval(
+        () => {
+          this.setData({
+            second: this.data.second - 1
+          })
+          if (this.data.second <= 0) {
+            this.setData({
+              second: 60,
+              alreadySend: false,
+              send: true
+            })
+            resolve(setTimer)
+          }
+        }
+        , 1000)
+    })
+    promise.then((setTimer) => {
+      clearInterval(setTimer)
+    })
+  },
   // 获取验证码
-  async sendPhoneCode() {
+  async sendCode() {
     if (!phoneNumber) {
       wx.showToast({
         title: "请先输入手机号",
@@ -33,6 +78,11 @@ Page({
     }
     try {
       const data = await postSendCode({ sendScene: sendScene, phoneNumber: phoneNumber })
+      this.setData({
+        alreadySend: true,
+        send: false
+      })
+      this.timer()
 
     } catch (e) {
       console.log(e)
