@@ -64,9 +64,6 @@ Page({
     }
     // 页面加载请求轮播
     this.getImagePage()
-    // 银行信息
-    this.BankListpage()
-
   },
   // 页面加载请求银行数据
   async BankListpage() {
@@ -74,8 +71,6 @@ Page({
     this.setData({
       backList: backList.list
     })
-    console.log(this.data.backList, "gagaga")
-    console.log(backList, "这是什么东西")
   },
 
   onLoad(opt) {
@@ -107,6 +102,8 @@ Page({
     this.setData({
       background_img: list
     })
+     // 银行信息
+     this.BankListpage()
   },
 
   // 跳转认证弹窗
