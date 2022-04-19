@@ -126,3 +126,6 @@
 .page_fled{
   margin-bottom: 20rpx;
 }
+.page_vd{
+    color: deepskyblue;
+}

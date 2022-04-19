@@ -1,6 +1,6 @@
 // pages/addinfo/addinfo.js
 import { getFuelGasCompanyList, postSmsSendCode, postCompanyAddUpdate, postFuelGasCompanyCheck } from '../../api/authentication'
-import { getCompanyInfo } from '../../api/home'
+import { getCompanyInfo,getAompanyAuthTemplate } from '../../api/home'
 import { postByToken } from "../../api/order"
 Page({
   /**
@@ -235,6 +235,12 @@ Page({
         })
       }
     })
+  },
+
+  // 下载默认样本
+  async download(){
+    let data =  await getAompanyAuthTemplate()
+    // console.log(data,"返回内容")
   },
 
 

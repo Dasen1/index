@@ -104,7 +104,7 @@
           <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{4}}">
             <image src="{{fromPage.authPersonFileUrl?fromPage.authPersonFileUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>
             <view>授权代办文件</view>
-             <view>下载文件</view>
+             <view class="page_vd" bindtap="download">样本下载</view>
           </view>
           <view wx:if="{{pageIsShow}}" class="head_wid" bindtap="dataApd" data-item="{{5}}">
             <image src="{{fromPage.authPersonIdCardFrontUrl?fromPage.authPersonIdCardFrontUrl:'../../image/image_mo.png'}}"  class="image_vip"></image>

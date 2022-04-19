@@ -130,7 +130,7 @@ Page({
     console.log(bankcode, "啥啊")
     //1.先验证是否绑定企业 -无绑定企业弹窗走企业认证-回首页
     let isShow = await getCustomerCheckIsCompany()
-    if (!isShow) {
+    if (isShow) {
       this.certification()
       return false
     }

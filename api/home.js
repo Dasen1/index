@@ -45,3 +45,12 @@ export function getBankListpage(data) {
   },"isToken")
 }
 
+// 获取企业授权模板
+export function getAompanyAuthTemplate(data) {
+  return request({
+    url: `/company/authTemplate`,
+    method: 'get',
+    data,
+  },"isToken")
+}
+
