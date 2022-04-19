@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    infoUser:{}, //页面加载的用户信息
+
     isShow: false,
     isShowData: false,
     fromPage: {}, //企业认证信息
@@ -44,6 +46,8 @@ Page({
     }
     // 页面加载获取企业认证信息
     this.companyInfo()
+
+    this.userInfo()
   },
 
   /**
@@ -57,6 +61,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 页面切走关闭弹窗
+    this.setData({
+      isShowData: false
+    })
+
     this.setData({
       isShow: false
     })
@@ -102,6 +111,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 页面加载获取用户信息
+
+  userInfo(){
+     let data =  wx.getStorageSync("info")
+     this.setData({
+       infoUser:data
+     })
   },
 
   // 跳转认证弹窗
