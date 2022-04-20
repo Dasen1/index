@@ -115,14 +115,14 @@ Page({
       })
       return
     }
-    if (!this.data.isShow) {
-      wx.showToast({
-        title: "请先同意用户手册",
-        icon: 'none',
-        duration: 1500
-      })
-      return
-    }
+    // if (!this.data.isShow) {
+    //   wx.showToast({
+    //     title: "请先同意用户手册",
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return
+    // }
 
     try {
       //  获取token  通过token获取用户讯息
@@ -135,7 +135,11 @@ Page({
               url: `/pages/index/index`,
             })
     } catch (e) {
-
+         wx.showToast({
+           title: `${e}`,
+           icon:"none",
+           duration:2000
+         })
     }
 
   },

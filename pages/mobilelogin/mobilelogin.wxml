@@ -1,5 +1,9 @@
 <!--pages/mobilelogin/mobilelogin.wxml-->
 <view class="wrap">
+   <view class="login_mb_a">
+     <image class="wid_flex" src="../../image/title.png" />
+     <div>佛然绿能贷</div>
+   </view>
   <view class="login_mb">手机验证码登录</view>
   <view class="weui-cell_input">
         <input maxlength="11" class="weui-input" type="number" bindinput="getPhoneNumber" placeholder="请输入手机号" />
@@ -11,12 +15,12 @@
   <button wx:if="{{alreadySend}}" type="primary" class="but_pd" size="mini">{{second+"s"}}</button>
  </view>
 
-   <view class="data-v"> 
+   <!-- <view class="data-v"> 
    <checkbox-group bindchange="checkboxChange" class="checkbox">
           <checkbox value="1" checked="{{isShow}}" />
            <text>同意《用户手册规则》</text>
         </checkbox-group>
-   </view>
+   </view> -->
    <button class="btn" type="primary" bindtap="loadByPhone">登录</button>
   
 </view>

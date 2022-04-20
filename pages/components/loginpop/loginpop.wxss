@@ -21,6 +21,8 @@
   
 }
 .info-a{
+  display: flex;
+  align-items: center;
   font-size: 14px;
   color: #000000;
 }
@@ -52,4 +54,8 @@
   text-align: center;
   color: #f03d3d;
   font-size: 14px;
+}
+.icon_title{
+  width: 40rpx;
+  height: 40rpx;
 }

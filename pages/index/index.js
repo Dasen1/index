@@ -130,7 +130,7 @@ Page({
     console.log(bankcode, "啥啊")
     //1.先验证是否绑定企业 -无绑定企业弹窗走企业认证-回首页
     let isShow = await getCustomerCheckIsCompany()
-    if (isShow) {
+    if (!isShow) {
       this.certification()
       return false
     }
@@ -166,7 +166,24 @@ Page({
   },
   // 快捷还款按钮
   quickPayment: function () {
-    this.fastClick()
+// this.fastClick()
+  //  跳转银行小程序方法
+    var str = 'channel:LND,custMobile:18518760330,token:N9HXpg,pageFlag:0,from:2,sign:签名值';
+    wx.navigateToMiniProgram({
+      appId: 'wx30747c10946af5af',
+      path: 'pages/entrance/index?param=' + encodeURIComponent(str),
+      envVersion:"release",
+      // extraData: {
+      //   foo: 'bar'
+      // },
+      success(res) {
+        // 打开成功
+        console.log("成功了么")
+      },
+      fail(res){
+        console.log(res,"跳转失败");
+     }
+    })
   },
 
 
