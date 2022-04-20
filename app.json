@@ -16,7 +16,8 @@
     "pages/out/out",
     "pages/personaldata/personaldata",
     "pages/creditdetail/creditdetail",
-    "pages/loansrecordDetail/loansrecordDetail"
+    "pages/loansrecordDetail/loansrecordDetail",
+    "pages/information/information"
   ],
   "window":{
     "backgroundTextStyle":"light",

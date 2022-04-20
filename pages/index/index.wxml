@@ -49,7 +49,7 @@
                     <view class="bank_flex">
                         <view class="flex_cd">
                             <!-- 目前判断是否浙商银行展示图标 -->
-                            <image wx:if="{{item.bankCode=='JS_BANK'}}" class="page_width" src="../../image/band_logo.png" />
+                            <image wx:if="{{item.bankCode=='CZ_BANK'}}" class="page_width" src="../../image/band_logo.png" />
                             <text class="fent_web">{{item.bankName}}</text>
                         </view>
                         <!-- <view class="font">
