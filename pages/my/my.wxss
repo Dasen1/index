@@ -206,6 +206,7 @@
 }
 .but_pd{
   width: 178rpx;
+  font-size: 28rpx;
 }
 .bpv{
   height: 40rpx;

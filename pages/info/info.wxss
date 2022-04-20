@@ -3,6 +3,8 @@
 .time_a{
   padding: 40rpx;
   /* height: 100vh; */
+  min-height: 100vh;
+  background-color: #EFEFEF;
   /* overflow-y: auto; */
   /* background-color: #c2c4c6; */
 }
@@ -23,8 +25,7 @@
   /* margin: 0 auto; */
   box-sizing: border-box;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.4);
-  background-color: #c2c4c6;
+  background-color: #fff;
   border-radius: 16rpx;
   font-size: 28rpx;
   color: #101010;

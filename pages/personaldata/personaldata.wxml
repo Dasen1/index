@@ -3,23 +3,23 @@
   <view class="agreement">
     <form catchsubmit="formSubmit" catchreset="formReset">
       <view class="flex pde">
-        <view class="flex_wid">公司名称</view>
+        <view class="flex_wid">公司名称:</view>
         <input class="weui-input apv" disabled value="{{fromPage.companyName}}" name="companyName" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">纳税人识别号</view>
+        <view class="flex_wid">纳税人识别号:</view>
         <input class="weui-input apv" disabled value="{{fromPage.taxNumber}}" name="taxNumber" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">法人姓名</view>
+        <view class="flex_wid">法人姓名:</view>
         <input class="weui-input apv" disabled value="{{fromPage.companyBossName}}" name="companyBossName" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">法人身份证号</view>
+        <view class="flex_wid">法人身份证号:</view>
         <input class="weui-input apv" disabled value="{{fromPage.bossIdCardNumber}}" name="bossIdCardNumber" placeholder="请输入" />
       </view>
       <view class="flex">
-        <view class="flex_wid">法人手机号</view>
+        <view class="flex_wid">法人手机号:</view>
         <input class="weui-input apv" disabled value="{{fromPage.bossPhoneNumber}}" name="bossPhoneNumber" placeholder="请输入" />
       </view>
       <!-- <view class="flex">

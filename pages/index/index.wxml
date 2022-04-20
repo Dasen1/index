@@ -47,8 +47,9 @@
             <view class="de_kiel">
                 <view class="bank" wx:for="{{backList}}" wx:key="*this">
                     <view class="bank_flex">
-                        <view>
-                            <img src="" alt="" />
+                        <view class="flex_cd">
+                            <!-- 目前判断是否浙商银行展示图标 -->
+                            <image wx:if="{{item.bankCode=='JS_BANK'}}" class="page_width" src="../../image/band_logo.png" />
                             <text class="fent_web">{{item.bankName}}</text>
                         </view>
                         <!-- <view class="font">

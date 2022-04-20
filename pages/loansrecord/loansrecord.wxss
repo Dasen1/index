@@ -23,7 +23,7 @@
 .page_right{
   text-align: right;
   font-size: 28rpx;
-  color: #aaa;
+  color: #0292F2;
 }
 .nome {
   font-size: 28rpx;

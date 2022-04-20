@@ -41,5 +41,6 @@
   margin-bottom: 20rpx;
 }
 .apv{
-  background-color: rgba(0, 0, 0, 0.1);
+  /* color: #aaa; */
+  background-color: rgba(0, 0, 0, 0);
 }

@@ -54,8 +54,8 @@
         <view class="flex">
           <view class="flex_wid">手机验证码</view>
           <input class="weui-input views" name="verifyCode" placeholder="请输入" />
-          <button wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
-          <button wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
+          <button type="primary" wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
+          <button type="primary"  wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
         </view>
         <view class="flex">
           <view class="flex_wid">申请人手机号</view>
@@ -64,8 +64,8 @@
         <view class="flex">
           <view class="flex_wid">手机验证码</view>
           <input class="weui-input views" name="verifyCode" placeholder="请输入" />
-          <button wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
-          <button wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
+          <button type="primary" wx:if="{{send}}" class="but_pd" bindtap="sendCode" size="mini">点击发送</button>
+          <button type="primary" wx:if="{{alreadySend}}" class="but_pd" size="mini">{{second+"s"}}</button>
         </view>
         <view class="flex">
           <view class="flex_wid">法人本人申请</view>
@@ -115,8 +115,8 @@
           </view>
         </view>
         <view class="size_flex">
-          <button class="btn_color" size="mini" bindtap="onayClick">好的</button>
-          <button class="btn_color" size="mini" formType="submit">修改注册信息</button>
+           <button class="btn_color" size="mini" formType="submit">修改注册信息</button>
+          <button class="btn_color" size="mini" bindtap="onayClick">返回</button>
         </view>
       </form>
     </view>

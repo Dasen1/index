@@ -6,7 +6,7 @@
 }
 .page-section{
   width: 100%;
-  height: 292rpx;
+  height: 260rpx;
   border-radius: 16rpx;
   overflow: hidden;
   margin-top: 180rpx;
@@ -14,6 +14,7 @@
 .data_img{
   margin: 0 auto;
   width: 100%;
+  height: 260rpx;
   border-radius: 16rpx;
 }
 .qr_page{
@@ -82,8 +83,7 @@
   height: 348rpx;
   background-color: rgb(255, 255, 255);
   overflow-y: auto;
-  border-top-left-radius: 16rpx;
-  border-top-right-radius: 16rpx;
+  border-radius: 16rpx;
   border: 2rpx solid rgb(187, 187, 187);
 }
 .bank{
@@ -192,4 +192,13 @@
   width: 40rpx;
   height: 40rpx;
   margin-right: 4rpx;
+}
+.page_width{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+.flex_cd{
+  display: flex;
+  align-items: center;
 }
