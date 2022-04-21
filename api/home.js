@@ -54,3 +54,12 @@ export function getAompanyAuthTemplate(data) {
   },"isToken")
 }
 
+// 跳转银行小程序 获取参数
+export function getBankSkipInfo(data) {
+  return request({
+    url: `/bank/skip/info`,
+    method: 'post',
+    data,
+  },"isToken")
+}
+

@@ -12,6 +12,9 @@
             <view>
            还款状态：{{item.repaymentStatus==1?"已还":item.repaymentStatus==2?"未还":""}}
           </view>
+           <view class="color_vh" wx:if="{{item.repaymentStatus==2}}">
+             去还款
+          </view>
       </view>
     </view>
      <view class="nome">没有更多了</view>

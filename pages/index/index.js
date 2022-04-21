@@ -1,6 +1,6 @@
 // index.js
 // 获取应用实例
-import { getImageList, getBankListpage, getCustomerCheckIsCompany, getCompanyGrantCreditStatus } from "../../api/home"
+import { getImageList, getBankListpage,getBankSkipInfo, getCustomerCheckIsCompany, getCompanyGrantCreditStatus } from "../../api/home"
 const app = getApp()
 
 Page({
@@ -139,24 +139,72 @@ Page({
     let setInfo = wx.getStorageSync("info")
     console.log(bankcode,setInfo.companyId,"什么东西啊，“嘎嘎嘎")
     let bankIsShow = await getCompanyGrantCreditStatus({ bankCode: bankcode, companyId: setInfo.companyId })
-   
-
-    // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
-    wx.showModal({
-      // title: '认证',
-      cancelText: "取消",
-      confirmText: "开始认证",
-      content: '您的企业还未进行银行认证',
-      success(res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: "/pages/personaldata/personaldata"
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+    //  返回1  需要走银行认证
+    //  返回2  审批中 弹窗将返回的信息修改好
+    //  返回3 成功 直接跳转银行
+    //  返回4 过期 直接跳转银行
+    if(bankIsShow.cstType==1){
+      wx.showModal({
+        // title: '认证',
+        cancelText: "取消",
+        confirmText: "开始认证",
+        content: '您的企业还未进行银行认证',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: "/pages/personaldata/personaldata"
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
         }
-      }
-    })
+      })
+    }
+
+    if(bankIsShow.cstType==2){
+      wx.showModal({
+         showCancel: false,
+        //  cancelText: "取消",
+         confirmText: "我知道了",
+         content: `${bankIsShow.feedBackDesc}`,
+         success(res) {
+           if (res.confirm) {
+            wx.switchTab({
+               url: "/pages/index/index"
+             })
+           } else if (res.cancel) {
+             console.log('用户点击取消')
+           }
+         }
+      })
+    }
+    
+    if(bankIsShow.cstType==3){ //跳转银行小程序
+      let data = await  getBankSkipInfo({companyId:setInfo.companyId,bankId:bankcode,pageFlag:0})
+      var str = 'channel:LND,custMobile:18518760330,token:N9HXpg,pageFlag:0,from:2,sign:签名值';
+      wx.navigateToMiniProgram({
+        appId: 'wx30747c10946af5af',
+        path: 'pages/entrance/index?param=' + encodeURIComponent(str),
+        envVersion:"release",
+        // extraData: {
+        //   foo: 'bar'
+        // },
+        success(res) {
+          // 打开成功
+          console.log("成功了么")
+        },
+        fail(res){
+          console.log(res,"跳转失败");
+       }
+      })
+    }
+    if(bankIsShow.cstType==4){
+
+    }
+
+ 
+    // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
+    
     // 4.携带需要数据跳转银行小程序
 
   },
@@ -167,24 +215,9 @@ Page({
   },
   // 快捷还款按钮
   quickPayment: function () {
-// this.fastClick()
+   this.fastClick()
   //  跳转银行小程序方法
-    var str = 'channel:LND,custMobile:18518760330,token:N9HXpg,pageFlag:0,from:2,sign:签名值';
-    wx.navigateToMiniProgram({
-      appId: 'wx30747c10946af5af',
-      path: 'pages/entrance/index?param=' + encodeURIComponent(str),
-      envVersion:"release",
-      // extraData: {
-      //   foo: 'bar'
-      // },
-      success(res) {
-        // 打开成功
-        console.log("成功了么")
-      },
-      fail(res){
-        console.log(res,"跳转失败");
-     }
-    })
+   
   },
 
 

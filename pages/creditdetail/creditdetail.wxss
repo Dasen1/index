@@ -25,3 +25,6 @@
   border-radius: 30rpx;
   margin-bottom: 20rpx;
 }
+.color_vh{
+  color: #0292f2;
+}
