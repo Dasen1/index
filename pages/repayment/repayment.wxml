@@ -19,7 +19,7 @@
       <view class="data_vwe" wx:key="{{index}}">
         <view class="info_vh">
           <text>贷款流水号：{{item.flowId}}</text>
-          <view class="bpv_play_ah" data-companyId="{{item.companyId}}" bindtap="creditRecord">
+          <view class="bpv_play_ah" data-id="{{item.id}}" bindtap="creditRecord">
             还款明细
           </view>
         </view>

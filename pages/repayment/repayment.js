@@ -133,9 +133,10 @@ Page({
 },
   // 点击跳转详情
   creditRecord: function (e) {
+    console.log(e,"什么内容")
     // 还款计划详情
     wx.navigateTo({
-      url: "/pages/creditdetail/creditdetail?companyid=" + e.target.dataset.companyid
+      url: "/pages/creditdetail/creditdetail?id=" + e.target.dataset.id
     })
   },
 

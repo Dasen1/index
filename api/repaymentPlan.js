@@ -20,9 +20,17 @@ export function getBankListPage(data) {
 }
 
 export function getRepaymentRecord(data) {
-  // 还款明细列表
+  // 还款列表
   return request({
     url: '/repayment/record/list/page',
+    method: 'get',
+    data,
+  },"isToken") 
+}
+export function getRepayPlanRecord(data) {
+  // 还款明细列表
+  return request({
+    url: '/repayment/plan/record/list/page',
     method: 'get',
     data,
   },"isToken") 

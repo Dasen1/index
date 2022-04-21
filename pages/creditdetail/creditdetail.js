@@ -1,5 +1,5 @@
 // pages/creditdetail/creditdetail.js
-import { getRepaymentRecord } from "../../api/repaymentPlan"
+import { getRepayPlanRecord } from "../../api/repaymentPlan"
 Page({
  
   /**
@@ -69,7 +69,7 @@ Page({
   dataDetail: async function () {
     var that  = this
     try {
-      const orders = await getRepaymentRecord({ pageSize: 20,companyId:that.options.companyid})
+      const orders = await getRepayPlanRecord({ pageSize: 20,repaymentPlanId:that.options.id})
       this.setData({
         dataList:orders.list
       })

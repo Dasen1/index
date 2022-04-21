@@ -137,8 +137,9 @@ Page({
 
     // 2.企业认证完-校验是否银行进行银行认证-无认证走银行认证-回首页
     let setInfo = wx.getStorageSync("info")
-    // let bankIsShow = await getCompanyGrantCreditStatus({ bankNo: bankcode, companyId: setInfo.companyId })
-
+    console.log(bankcode,setInfo.companyId,"什么东西啊，“嘎嘎嘎")
+    let bankIsShow = await getCompanyGrantCreditStatus({ bankCode: bankcode, companyId: setInfo.companyId })
+   
 
     // 3.银行认证完判断是否有可贷款金额-无可贷提示银行审核中，请等待
     wx.showModal({
